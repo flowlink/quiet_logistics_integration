@@ -28,4 +28,8 @@ ADD ./ /app
 EXPOSE 5000
 
 ENTRYPOINT [ "bundle", "exec" ]
-CMD [ "foreman", "start" ]
+# CMD [ "foreman", "start" ]
+
+## this is a nasty hack, but without it foreman throws:
+## `setpgrp': Operation not permitted (Errno::EPERM)
+CMD [ "bash -c 'true && foreman start'"]
