@@ -5,8 +5,12 @@ class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
   set :logging, true
 
   before do
-    AWS.config(access_key_id: @config['amazon_access_key'],
-               secret_access_key: @config['amazon_secret_key']) if request.request_method == 'POST'
+    #Aws.config(access_key_id: @config['amazon_access_key'],
+    #           secret_access_key: @config['amazon_secret_key']) if request.request_method == 'POST'
+    Aws.config.update({
+      region: 'us-west-2',
+      credentials: Aws::Credentials.new('akid', 'secret')
+    }) if request.request_method == 'POST'
   end
 
   post '/get_messages' do
