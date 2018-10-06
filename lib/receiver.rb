@@ -12,7 +12,8 @@ class Receiver
     queue = @sqs.queue(@queue_name)
 
     4.times do
-      queue.receive_messages(max_number_of_messages: @limit) do |sqs_message|
+      messages = queue.receive_messages(max_number_of_messages: @limit)
+      messages.each do |sqs_message|
         msg = Messages::MessageParser.parse(sqs_message)
 
         next if msg.empty?

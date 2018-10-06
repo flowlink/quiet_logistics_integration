@@ -8,7 +8,7 @@ class Sender
 
   def send_message(event_message)
     queue = sqs.queue(@queue_name)
-    sqs_message = queue.send_message(event_message.to_xml)
-    sqs_message.id
+    sqs_message = queue.send_message({message_body: event_message.to_xml})
+    sqs_message.message_id
   end
 end

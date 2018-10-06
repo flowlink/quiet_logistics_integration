@@ -4,18 +4,18 @@ class Uploader
   end
 
   def process(name, xml)
-    file = StringIO.new(xml)
-    upload(name, file)
+    #file = StringIO.new(xml)
+    upload(name, xml)
   end
 
   private
-  def upload(name, file)
-    s3 = Aws::S3.new
-    bucket = s3.buckets[@bucket]
+  def upload(name, xml)
+    s3 = Aws::S3::Resource.new
+    bucket = s3.bucket(@bucket)
 
-    s3_object = bucket.objects[name]
-    s3_object.write(:file => file)
+    s3_object = bucket.object(name)
+    s3_object.put(body: xml)
 
-    s3_object.url_for(:read)
+    s3_object.public_url
   end
 end
