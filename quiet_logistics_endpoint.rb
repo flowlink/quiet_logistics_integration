@@ -2,15 +2,21 @@ Dir['./lib/**/*.rb'].each { |f| require f }
 
 class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
 
+  configure :development do
+    register Sinatra::Reloader
+    also_reload 'lib/**/*.*'
+  end
+
   set :logging, true
 
   before do
-    #Aws.config(access_key_id: @config['amazon_access_key'],
-    #           secret_access_key: @config['amazon_secret_key']) if request.request_method == 'POST'
     Aws.config.update({
-      region: 'us-west-2',
-      credentials: Aws::Credentials.new('akid', 'secret')
-    }) if request.request_method == 'POST'
+      region: @config['amazon_region'],
+      credentials: Aws::Credentials.new(
+        @config['amazon_access_key'],
+        @config['amazon_secret_key']
+      )
+    })
   end
 
   post '/get_messages' do

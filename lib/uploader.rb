@@ -10,7 +10,7 @@ class Uploader
 
   private
   def upload(name, file)
-    s3 = AWS::S3.new
+    s3 = Aws::S3.new
     bucket = s3.buckets[@bucket]
 
     s3_object = bucket.objects[name]
