@@ -3,7 +3,7 @@ module Messages
 
     def self.parse(sqs_message)
       doc  = Nokogiri::XML(sqs_message.body)
-      id   = sqs_message.id
+      id   = sqs_message.message_id
       type = doc.children[0].name
 
       msg = if type == 'ErrorMessage'
