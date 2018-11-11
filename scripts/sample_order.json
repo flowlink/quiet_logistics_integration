@@ -1,0 +1,84 @@
+{
+  "id": "S-1048",
+  "email": "susyv13@gmail.com",
+  "source": "underallsplus.myshopify.com",
+  "status": "completed",
+  "totals": {
+    "tax": 0.0,
+    "item": 88.0,
+    "order": 0.0,
+    "refund": 0.0,
+    "payment": 0.0,
+    "discount": 88.0,
+    "shipping": 0.0
+  },
+  "channel": "web",
+  "refunds": [
+
+  ],
+  "currency": "USD",
+  "payments": [
+
+  ],
+  "placed_on": "2018-11-05T17:00:07-05:00",
+  "line_items": [
+    {
+      "name": "Kelly & Lennon in Black (Original) - Black / XS",
+      "price": 88.0,
+      "quantity": 1,
+      "product_id": "1117D00U1802",
+      "shopify_id": "1807543042166",
+      "shopify_parent_id": "2108745711734"
+    }
+  ],
+  "shopify_id": "787578028150",
+  "updated_at": "2018-11-05T17:00:08-05:00",
+  "adjustments": [
+    {
+      "name": "Tax",
+      "codes": "",
+      "rates": "",
+      "value": 0.0
+    },
+    {
+      "name": "Shipping",
+      "value": 0.0
+    },
+    {
+      "name": "Discounts",
+      "type": "fixed_amount",
+      "codes": "ThanksSusana!",
+      "value": "88.00"
+    }
+  ],
+  "order_number": "1048",
+  "shopify_name": "#1048",
+  "tax_line_items": [
+
+  ],
+  "billing_address": {
+    "city": "Inlet Beach ",
+    "phone": "(917) 518-6544",
+    "state": "Florida",
+    "company": "",
+    "country": "US",
+    "zipcode": "32461",
+    "address1": "13123 E Emerald Coast Pkwy ",
+    "address2": "Ste B # 263",
+    "lastname": "Villanueva",
+    "firstname": "Susana "
+  },
+  "shipping_method": "Standard (3-5 Business Days)",
+  "shipping_address": {
+    "city": "Inlet Beach ",
+    "phone": "(917) 518-6544",
+    "state": "Florida",
+    "company": "",
+    "country": "US",
+    "zipcode": "32461",
+    "address1": "13123 E Emerald Coast Pkwy ",
+    "address2": "Ste B # 263",
+    "lastname": "Villanueva",
+    "firstname": "Susana "
+  }
+}
