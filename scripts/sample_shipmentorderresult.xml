@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<SOResult xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ClientID="UNDERALLS" BusinessUnit="UNDERALLS" OrderNumber="S-1035" DateShipped="2018-11-09T19:43:55.3967344Z" FreightCost="0" CartonCount="1" Warehouse="DVN" xmlns="http://schemas.quiettechnology.com/V2/SOResultDocument.xsd">
-  <Line Line="1" ItemNumber="1111B12U1804" Quantity="1" ExceptionCode="" Tax="0" Total="0" SubstitutedItem="" />
-  <Carton CartonId="S33181276" TrackingId="9405510200793905505010" Carrier="USPS" CartonNumber="1" ServiceLevel="PRIORITY" Weight="1.69" FreightCost="9.47" HandlingFee="0" Surcharge="0">
-    <Content Line="1" ItemNumber="1111B12U1804" Quantity="1" />
-  </Carton>
-  <Extension>S-1035</Extension>
-</SOResult>
