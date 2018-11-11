@@ -38,6 +38,9 @@ module Documents
       @tracking_number = @doc.xpath('//@TrackingId').first.value
       @business_unit = @doc.xpath('//@BusinessUnit').first.value
       @warehouse = @doc.xpath("//@Warehouse").first.text
+      @carrier = @doc.xpath("//@Carrier").first.text
+      @service_level = @doc.xpath("//@ServiceLevel").first.text
+      @shipping_method = @carrier + ' ' + @service_level
     end
 
     def to_h
@@ -45,6 +48,7 @@ module Documents
         id: @shipment_number,
         # NOTE: There may multiple tracking numbers. This is just the first.
         tracking: @tracking_number,
+        shipping_method: @shipping_method,
         warehouse: @warehouse,
         status: 'shipped',
         business_unit: @business_unit,
