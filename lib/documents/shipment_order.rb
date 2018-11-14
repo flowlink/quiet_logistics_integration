@@ -55,7 +55,7 @@ module Documents
     def ship_to_hash
       {
         'Company'    => full_name,
-        'Contact'    => @shipment['shipping_address']['contact'],
+        'Contact'    => full_name,
         'Address1'   => @shipment['shipping_address']['address1'],
         'Address2'   => @shipment['shipping_address']['address2'],
         'City'       => @shipment['shipping_address']['city'],
@@ -68,7 +68,7 @@ module Documents
     def bill_to_hash
       {
         'Company'    => full_name,
-        'Contact'    => @shipment['billing_address']['contact'],
+        'Contact'    => full_name,
         'Address1'   => @shipment['billing_address']['address1'],
         'Address2'   => @shipment['billing_address']['address2'],
         'City'       => @shipment['billing_address']['city'],

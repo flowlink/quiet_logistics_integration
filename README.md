@@ -12,6 +12,15 @@ This is a fully hosted and supported integration for use with the [FlowLink](htt
 * Retrieve inventory levels from Quiet Logistics
 * Retrieve error messages associated with previous operations
 
+## Troubleshooting
+To quickly view what's in your QL buckets and queues:
+
+```
+export QL_ACCESS_KEY_ID=[your access key id]
+export QL_SECRET_ACCESS_KEY=[your secret access key]
+ruby scripts/sanity_check.rb
+```
+
 # About FlowLink
 
 [FlowLink](http://flowlink.io/) allows you to connect to your own custom integrations.

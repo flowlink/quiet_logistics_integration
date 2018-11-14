@@ -8,13 +8,7 @@ class Downloader
     bucket = s3.bucket(@bucket)
     object = bucket.object(file_name)
 
-    buffer = StringIO.new("", 'w')
-    object.read do |chunk|
-      buffer << chunk
-    end
-    buffer.close
-
-    buffer.string
+    object.get.body.read
   end
 
   def delete_file(name)

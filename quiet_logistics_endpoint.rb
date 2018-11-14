@@ -60,7 +60,7 @@ class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
 
   post '/add_shipment' do
     begin
-      shipment = @payload['shipment']
+      shipment = @payload['shipment'] || @payload['order']
       message  = Api.send_document('ShipmentOrder', shipment, outgoing_bucket, outgoing_queue, @config)
       code     = 200
     rescue => e
