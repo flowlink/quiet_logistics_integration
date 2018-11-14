@@ -697,7 +697,7 @@ DEPENDENCIES
   aws-sdk
   endpoint_base!
   foreman
-  honeybadger
+  honeybadger (~> 4.0)
   multi_json (~> 1.0)
   nokogiri
   pry
@@ -713,4 +713,4 @@ DEPENDENCIES
   webmock
 
 BUNDLED WITH
-   1.16.0
+   1.16.5
