@@ -123,7 +123,7 @@ class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
 
       if type == 'ShipmentOrderResult'
         data   = Processor.new(bucket).process_doc(msg)
-        add_object(data.type.to_sym, data.to_h)
+        add_object(data.type.to_sym, data.to_flowlink_hash)
         message  = "Got Shipment for #{msg['document_name']}"
       end
 
