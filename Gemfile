@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-gem 'honeybadger'
+gem 'honeybadger', '~> 4.0'
 gem 'nokogiri'
 gem 'aws-sdk'
 gem 'timecop'
