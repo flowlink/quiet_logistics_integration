@@ -46,6 +46,7 @@ module Documents
         status: 'shipped',
         business_unit: @doc.xpath('//@BusinessUnit').first.value,
         shipped_at: @doc.xpath('//@DateShipped').first.text,
+        tracking_company: @doc.xpath('//@Carrier').first.text,
         line_items: line_items_to_h
       }
     end
