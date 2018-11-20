@@ -1,3 +1,8 @@
+require 'sinatra'
+require 'endpoint_base'
+require 'json'
+require 'honeybadger'
+
 Dir['./lib/**/*.rb'].each { |f| require f }
 
 class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
@@ -102,6 +107,27 @@ class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
       shipment = @payload['rma']
       message  = Api.send_document('RMADocument', shipment, outgoing_bucket, outgoing_queue, @config)
       code     = 200
+    rescue => e
+      message  = e.message
+      code     = 500
+    end
+
+    result code, message
+  end
+
+  post '/get_shipments' do
+    begin
+      bucket = @config['ql_incoming_bucket']
+      msg    = @payload['message']
+      type   = msg['document_type']
+
+      if type == 'ShipmentOrderResult'
+        data   = Processor.new(bucket).process_doc(msg)
+        add_object(data.type.to_sym, data.to_h)
+        message  = "Got Shipment for #{msg['document_name']}"
+      end
+
+      code = 200
     rescue => e
       message  = e.message
       code     = 500

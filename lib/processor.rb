@@ -15,6 +15,8 @@ class Processor
       data = downloader.download(name)
     end
 
+    # Not cool to delete it! we are separating the endpoints, so it is better not
+    # to delete it.
     # downloader.delete_file(name)
 
     parse_doc(type, data)
