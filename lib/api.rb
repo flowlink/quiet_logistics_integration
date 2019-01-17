@@ -13,7 +13,7 @@ class Api
         Documents::ItemProfile.new(content, config)
       when 'RMADocument'
         Documents::RMA.new(content, config)
-      when 'CancelOrder'
+      when 'ShipmentOrderCancel'
         Documents::ShipmentOrderCancel.new(content, config)
       end
 
