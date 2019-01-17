@@ -13,3 +13,4 @@ services:
     tty: true
     logging:
       driver: gcplogs
+    restart: always
