@@ -30,6 +30,11 @@ module Documents
             xml.ShipTo(ship_to_hash)
             xml.BillTo(bill_to_hash)
 
+            xml.ValueAddedService(
+              'Service'     => @shipment['service'],
+              'ServiceType' => @shipment['service_type']
+            ) if @shipment['service_type'] && @shipment['service']
+
             xml.Notes('NoteType' => @shipment['note_type'].to_s, 'NoteValue' => @shipment['note_value'].to_s)
           }
 
