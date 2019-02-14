@@ -24,6 +24,8 @@ module Documents
 
             xml.Comments shipment['comments'].to_s
 
+            xml.Gift(@shipment['gift']) if @shipment['gift'] #boolean
+
             xml.ShipMode('Carrier'      => @shipment['carrier'],
                          'ServiceLevel' => @shipment['service_level'])
 
