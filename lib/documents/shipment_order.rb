@@ -24,11 +24,18 @@ module Documents
 
             xml.Comments shipment['comments'].to_s
 
+            xml.Gift(@shipment['gift']) if @shipment['gift'] #boolean
+
             xml.ShipMode('Carrier'      => @shipment['carrier'],
                          'ServiceLevel' => @shipment['service_level'])
 
             xml.ShipTo(ship_to_hash)
             xml.BillTo(bill_to_hash)
+
+            xml.ValueAddedService(
+              'Service'     => @shipment['service'],
+              'ServiceType' => @shipment['service_type']
+            ) if @shipment['service_type'] && @shipment['service']
 
             xml.Notes('NoteType' => @shipment['note_type'].to_s, 'NoteValue' => @shipment['note_value'].to_s)
           }
