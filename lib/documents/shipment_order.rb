@@ -31,15 +31,17 @@ module Documents
             xml.ShipTo(ship_to_hash)
             xml.BillTo(bill_to_hash)
 
+            xml.Notes('NoteType' => @shipment['note_type'].to_s, 'NoteValue' => @shipment['note_value'].to_s)
+
             xml.ValueAddedService(
               'Service'     => @shipment['service'],
               'ServiceType' => @shipment['service_type']
             ) if @shipment['service_type'] && @shipment['service']
 
-            # xml.Notes('NoteType' => @shipment['note_type'].to_s, 'NoteValue' => @shipment['note_value'].to_s)
+            xml.Gift(@shipment['gift'].to_s) if @shipment['gift'] #boolean
+            
           }
 
-          xml.Gift(@shipment['gift'].to_s) if @shipment['gift'] #boolean
 
           @shipment['items'].collect do |item|
             xml.OrderDetails(line_item_hash(item))
