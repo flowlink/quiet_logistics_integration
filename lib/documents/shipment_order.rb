@@ -37,7 +37,7 @@ module Documents
               'ServiceType' => @shipment['service_type']
             ) if @shipment['service_type'] && @shipment['service']
 
-            xml.Notes('NoteType' => @shipment['note_type'].to_s, 'NoteValue' => @shipment['note_value'].to_s)
+            # xml.Notes('NoteType' => @shipment['note_type'].to_s, 'NoteValue' => @shipment['note_value'].to_s)
           }
 
           @shipment['items'].collect do |item|
