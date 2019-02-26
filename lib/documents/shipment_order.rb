@@ -24,7 +24,6 @@ module Documents
 
             xml.Comments shipment['comments'].to_s
 
-            xml.Gift(@shipment['gift']) if @shipment['gift'] #boolean
 
             xml.ShipMode('Carrier'      => @shipment['carrier'],
                          'ServiceLevel' => @shipment['service_level'])
@@ -39,6 +38,8 @@ module Documents
 
             # xml.Notes('NoteType' => @shipment['note_type'].to_s, 'NoteValue' => @shipment['note_value'].to_s)
           }
+
+          xml.Gift(@shipment['gift'].to_s) if @shipment['gift'] #boolean
 
           @shipment['items'].collect do |item|
             xml.OrderDetails(line_item_hash(item))
