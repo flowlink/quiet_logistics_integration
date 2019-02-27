@@ -18,7 +18,8 @@ module Documents
 
           xml.OrderHeader('OrderNumber' => @shipment_number,
                           'OrderType'   => @shipment['order_type'],
-                          'OrderDate'   => DateTime.now.iso8601) {
+                          'OrderDate'   => DateTime.now.iso8601,
+                          'Gift'        => @shipment['gift'] ? 'true' : 'false') {
 
             xml.Extension shipment['order_number']
 
@@ -36,10 +37,8 @@ module Documents
             xml.ValueAddedService(
               'Service'     => @shipment['service'],
               'ServiceType' => @shipment['service_type']
-            ) if @shipment['service_type'] && @shipment['service']
+            ) if ( @shipment['service_type'] && @shipment['service'] )
 
-            xml.Gift(@shipment['gift'].to_s) if @shipment['gift'] #boolean
-            
           }
 
 
