@@ -17,7 +17,6 @@ module Documents
         'Gift'        => @shipment['gift'] ? 'true' : 'false'
       }
 
-      order_header['ShipSpecialServiceType'] = 'SIGNATURE' if @shipment['signature_requested']
 
       builder = Nokogiri::XML::Builder.new do |xml|
         xml.ShipOrderDocument('xmlns' => 'http://schemas.quietlogistics.com/V2/ShipmentOrder.xsd') {
@@ -38,6 +37,7 @@ module Documents
             xml.ShipTo(ship_to_hash)
             xml.BillTo(bill_to_hash)
 
+            xml.ShipSpecialService('SIGNATURE') if @shipment['signature_requested']
             xml.Notes('NoteType' => @shipment['note_type'].to_s, 'NoteValue' => @shipment['note_value'].to_s)
 
             xml.ValueAddedService(
