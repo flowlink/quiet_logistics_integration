@@ -10,16 +10,22 @@ module Documents
     end
 
     def to_xml
+      order_header = {
+        'OrderNumber' => @shipment_number,
+        'OrderType'   => @shipment['order_type'],
+        'OrderDate'   => DateTime.now.iso8601,
+        'Gift'        => @shipment['gift'] ? 'true' : 'false'
+      }
+
+      order_header['ShipSpecialServiceType'] = 'SIGNATURE' if @shipment['signature_requested']
+
       builder = Nokogiri::XML::Builder.new do |xml|
         xml.ShipOrderDocument('xmlns' => 'http://schemas.quietlogistics.com/V2/ShipmentOrder.xsd') {
 
           xml.ClientID @config['client_id']
           xml.BusinessUnit @config['business_unit']
 
-          xml.OrderHeader('OrderNumber' => @shipment_number,
-                          'OrderType'   => @shipment['order_type'],
-                          'OrderDate'   => DateTime.now.iso8601,
-                          'Gift'        => @shipment['gift'] ? 'true' : 'false') {
+          xml.OrderHeader(order_header) {
 
             xml.Extension shipment['order_number']
 
