@@ -30,7 +30,7 @@ module Documents
 
     def initialize(xml)
       @doc = Nokogiri::XML(xml)
-      @type = :shipment
+      @type = :order
     end
 
     def to_flowlink_hash

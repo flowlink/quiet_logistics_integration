@@ -155,7 +155,7 @@ class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
       msg    = @payload['message']
       type   = msg['document_type']
 
-      if type == 'ShipmentOrderCancelResult'
+      if type == 'ShipmentOrderCancelReady'
         data   = Processor.new(bucket).process_doc(msg)
         add_object(data.type.to_sym, data.to_flowlink_hash)
         message  = "Got Shipment Cancellation for #{msg['document_name']}"
