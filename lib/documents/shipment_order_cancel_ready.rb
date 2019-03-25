@@ -23,7 +23,7 @@
 # See the specs for a full example.
 
 module Documents
-  class ShipmentOrderCancelResult
+  class ShipmentOrderCancelReady
     NAMESPACE = 'http://schemas.quietlogistics.com/V2/SOCancelResultDocument.xsd'
 
     attr_reader :type

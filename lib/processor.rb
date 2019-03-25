@@ -28,8 +28,8 @@ class Processor
     case type
     when 'ShipmentOrderResult'
       Documents::ShipmentOrderResult.new(data)
-    when 'ShipmentOrderCancelResult'
-      Documents::ShipmentOrderCancelResult.new(data)
+    when 'ShipmentOrderCancelReady'
+      Documents::ShipmentOrderCancelReady.new(data)
     when 'PurchaseOrderReceipt'
       Documents::PurchaseOrderReceipt.new(data)
     when 'RMAResultDocument'
