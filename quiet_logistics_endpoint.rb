@@ -67,6 +67,18 @@ class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
     begin
       shipment = @payload['shipment'] || @payload['order']
       message  = Api.send_document('ShipmentOrder', shipment, outgoing_bucket, outgoing_queue, @config)
+
+      if shipment['return_to_flowlink']
+        add_object(
+          :shipment,
+          {
+            id: shipment['id']
+          }.merge(
+            shipment['return_to_flowlink']
+          )
+        )
+      end
+
       code     = 200
     rescue => e
       message = e.message
