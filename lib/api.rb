@@ -18,9 +18,11 @@ class Api
       end
 
     uploader = Uploader.new(bucket)
+    puts document.to_xml
+    puts document.name
+
     url = uploader.process(document.name, document.to_xml)
 
-    puts document.to_xml
 
     event_message = EventMessage.new(type, document.name, config)
     sender = Sender.new(queue)
