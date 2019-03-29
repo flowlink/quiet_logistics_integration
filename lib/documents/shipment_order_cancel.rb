@@ -7,7 +7,7 @@ module Documents
     def initialize(order, config)
       @order          = order
       @config         = config
-      @order_number   = order['id']
+      @order_number   = order['order_number']
       @name            = "#{@config['business_unit']}_ShipmentOrderCancel_#{@shipment_number}_#{date_stamp}.xml"
     end
 
