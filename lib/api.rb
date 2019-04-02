@@ -15,6 +15,8 @@ class Api
         Documents::RMA.new(content, config)
       when 'ShipmentOrderCancel'
         Documents::ShipmentOrderCancel.new(content, config)
+      when 'InventorySummaryRequest'
+        Documents::InventorySummaryRequest.new(content, config)
       end
 
     uploader = Uploader.new(bucket)

@@ -114,6 +114,19 @@ class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
     result code, message
   end
 
+  post '/add_inventory_summary_request' do
+    begin
+      inventory   = {}
+      message = Api.send_document('InventorySummaryRequest', inventory, outgoing_bucket, outgoing_queue, @config)
+      code    = 200
+    rescue => e
+      message = e.message
+      code    = 500
+    end
+
+    result code, message
+  end
+
   post '/add_product' do
     begin
       item    = @payload['product']
@@ -155,6 +168,29 @@ class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
       code = 200
     rescue => e
       message  = e.message
+      code     = 500
+    end
+
+    result code, message
+  end
+
+  post '/get_inventory_summary' do
+    begin
+      bucket = @config['ql_incoming_bucket']
+      msg    = @payload['message']
+      type   = msg['document_type']
+
+      if type == 'InventorySummaryReady'
+        data   = Processor.new(bucket).process_doc(msg)
+        data.to_flowlink_hash.each do |item|
+          add_object(data.type.to_sym, item)
+        end
+        message  = "Got inventory for #{msg['document_name']}"
+      end
+
+      code = 200
+    rescue => e
+      message  = e.backtrace
       code     = 500
     end
 
