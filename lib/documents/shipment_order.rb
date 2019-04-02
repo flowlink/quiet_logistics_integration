@@ -77,7 +77,7 @@ module Documents
         'State'      => @shipment['shipping_address']['state'],
         'PostalCode' => @shipment['shipping_address']['zipcode'],
         'Country'    => @shipment['shipping_address']['country']
-      }
+      }.compact
     end
 
     def bill_to_hash
@@ -90,7 +90,7 @@ module Documents
         'State'      => @shipment['billing_address']['state'],
         'PostalCode' => @shipment['billing_address']['zipcode'],
         'Country'    => @shipment['billing_address']['country']
-      }
+      }.compact
     end
 
     def full_name

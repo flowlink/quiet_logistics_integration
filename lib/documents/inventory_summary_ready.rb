@@ -45,10 +45,11 @@ module Documents
 
         statuses.each do |status|
           inventories << {
-              id: "#{Time.now.strftime('%Y%m%d_%H%M%3N')}_#{item['ItemNumber']}",
+              id: "#{item['ItemNumber']}",
               product_id: item['ItemNumber'],
               location: summary.first['Warehouse'],
-              quantity: status['Quantity'].to_i
+              quantity: status['Quantity'].to_i,
+              updated_at: Time.now.strftime('%Y%m%d_%H%M%3N')
           } if status['Status'] == 'Avail'
         end
       end
