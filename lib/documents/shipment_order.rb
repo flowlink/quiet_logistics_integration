@@ -69,7 +69,7 @@ module Documents
 
     def ship_to_hash
       {
-        'Company'    => full_name,
+        'Company'    => company_name,
         'Contact'    => full_name,
         'Address1'   => @shipment['shipping_address']['address1'],
         'Address2'   => @shipment['shipping_address']['address2'],
@@ -82,7 +82,7 @@ module Documents
 
     def bill_to_hash
       {
-        'Company'    => full_name,
+        'Company'    => company_name,
         'Contact'    => full_name,
         'Address1'   => @shipment['billing_address']['address1'],
         'Address2'   => @shipment['billing_address']['address2'],
@@ -103,6 +103,18 @@ module Documents
 
     def date_stamp
       Time.now.strftime('%Y%m%d_%H%M%3N')
+    end
+
+    def company_ship_name
+      return @shipment['shipping_address']['company'] if @config['use_company_name']
+
+      full_name
+    end
+
+    def company_bill_name
+      return @shipment['billing_address']['company'] if @config['use_company_name']
+
+      full_name
     end
   end
 end
