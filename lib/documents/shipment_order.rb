@@ -69,7 +69,7 @@ module Documents
 
     def ship_to_hash
       {
-        'Company'    => company_name,
+        'Company'    => company_ship_name,
         'Contact'    => full_name,
         'Address1'   => @shipment['shipping_address']['address1'],
         'Address2'   => @shipment['shipping_address']['address2'],
@@ -82,7 +82,7 @@ module Documents
 
     def bill_to_hash
       {
-        'Company'    => company_name,
+        'Company'    => company_bill_name,
         'Contact'    => full_name,
         'Address1'   => @shipment['billing_address']['address1'],
         'Address2'   => @shipment['billing_address']['address2'],
