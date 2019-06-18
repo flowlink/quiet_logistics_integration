@@ -38,6 +38,7 @@ module Documents
             xml.BillTo(bill_to_hash)
 
             xml.ShipSpecialService('SIGNATURE') if @shipment['signature_requested']
+            xml.ShipSpecialService(@shipment['special_service']) if @shipment['special_service']
             xml.Notes('NoteType' => @shipment['note_type'].to_s, 'NoteValue' => @shipment['note_value'].to_s)
 
             xml.ValueAddedService(
