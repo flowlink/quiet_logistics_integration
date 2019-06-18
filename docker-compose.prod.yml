@@ -1,15 +1,11 @@
-version: "2"
+version: "3"
 
 services:
   quiet-logistics-integration:
     container_name: quietlogistics-integration-container
-    network_mode: bridge
     environment:
       - VIRTUAL_HOST=quietlogistics_integration.flowlink.io
-    build: .
-    volumes:
-      - .:/app
-    stdin_open: true
-    tty: true
     logging:
       driver: gcplogs
+    network_mode: bridge
+    restart: always
