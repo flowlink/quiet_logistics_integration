@@ -1,14 +1,9 @@
-version: "2"
+version: "3"
 
 services:
   quiet-logistics-integration:
-    environment:
-      - VIRTUAL_HOST=quietlogistics_integration.flowlink.io
-      - RAILS_ENV=development
     build: .
-    ports:
-      - 5000:5000
-    volumes:
-      - .:/app
     stdin_open: true
     tty: true
+    volumes:
+      - .:/app

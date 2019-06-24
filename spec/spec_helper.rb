@@ -12,8 +12,8 @@ Bundler.require(:default, :test, :development)
 require_relative '../quiet_logistics_endpoint.rb'
 
 Dir['./spec/support/**/*.rb'].each { |f| require f }
-AWS.config(access_key_id: '123', secret_access_key: '123')
-
+# Aws.config(access_key_id: '123', secret_access_key: '123')
+Aws.config.update(credentials: Aws::Credentials.new('123', '123'))
 
 RSpec.configure do |config|
   config.treat_symbols_as_metadata_keys_with_true_values = true

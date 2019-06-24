@@ -22,6 +22,16 @@ module Factories
         "country" => "US",
         "phone" => "0000000000",
       },
+      "billing_address" => {
+        "firstname" => "Some Name",
+        "lastname" => "",
+        "address1" => "1234 Way",
+        "address2" => "",
+        "city" => "Fairfield",
+        "country" => "",
+        "zipcode" => "06824",
+        "state" => "CT"
+      },
       "items" => [
         {
           "name" => "Spree T-Shirt",
