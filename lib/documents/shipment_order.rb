@@ -77,6 +77,8 @@ module Documents
         'City'       => @shipment['shipping_address']['city'],
         'State'      => @shipment['shipping_address']['state'],
         'PostalCode' => @shipment['shipping_address']['zipcode'],
+        'Phone'      => @shipment['shipping_address']['phone'],
+        'Email'      => @shipment['shipping_address']['email'],
         'Country'    => @shipment['shipping_address']['country']
       }.compact
     end
@@ -90,6 +92,8 @@ module Documents
         'City'       => @shipment['billing_address']['city'],
         'State'      => @shipment['billing_address']['state'],
         'PostalCode' => @shipment['billing_address']['zipcode'],
+        'Phone'      => @shipment['billing_address']['phone'],
+        'Email'      => @shipment['billing_address']['email'],
         'Country'    => @shipment['billing_address']['country']
       }.compact
     end
