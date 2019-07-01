@@ -228,10 +228,7 @@ class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
         message  = "Got error code #{msg['error_code']}"
       end
 
-      code = 200
-    rescue => e
-      message  = e.message
-      code     = 500
+      code = 500
     end
 
     result code, message
