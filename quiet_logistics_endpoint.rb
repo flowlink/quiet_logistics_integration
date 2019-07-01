@@ -218,6 +218,22 @@ class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
     result code, message
   end
 
+  post '/get_errors' do
+    begin
+      msg    = @payload['message']
+      type   = msg['document_type']
+
+      if type == 'error'
+        add_object(:error, msg)
+        message  = "Got error code #{msg['error_code']}"
+      end
+
+      code = 500
+    end
+
+    result code, message
+  end
+
   def outgoing_queue
     @config['ql_outgoing_queue']
   end
