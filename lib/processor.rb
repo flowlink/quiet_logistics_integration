@@ -38,6 +38,8 @@ class Processor
       Documents::InventoryAdjustment.new(data)
     when 'InventorySummaryReady'
       Documents::InventorySummaryReady.new(data)
+    when 'RMAResult'
+      Documents::RMAResult.new(data)
     else
       Struct.new(:type).new(:unknown)
     end
