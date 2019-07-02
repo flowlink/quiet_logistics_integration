@@ -12,7 +12,7 @@ module Documents
       @doc.xpath("//@BusinessUnit").first.text
     end
 
-    def to_h
+    def to_flowlink_hash
       {
         id: "#{@number}-#{Time.now.strftime('%Y%m%d%H%M%S%L')}",
         rma_number: @number,

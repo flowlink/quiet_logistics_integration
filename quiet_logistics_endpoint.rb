@@ -234,6 +234,27 @@ class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
     result code, message
   end
 
+  post '/get_returns' do
+    begin
+      bucket = @config['ql_incoming_bucket']
+      msg    = @payload['message']
+      type   = msg['document_type']
+
+      if type == 'RMAResult'
+        data   = Processor.new(bucket).process_doc(msg)
+        add_object(data.type.to_sym, data.to_flowlink_hash)
+        message  = "Got RMAResult for #{msg['document_name']}"
+      end
+
+      code = 200
+    rescue => e
+      message  = e.message
+      code     = 500
+    end
+
+    result code, message
+  end
+
   def outgoing_queue
     @config['ql_outgoing_queue']
   end
