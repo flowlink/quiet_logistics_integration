@@ -39,9 +39,9 @@ module Documents
 
             xml.ShipSpecialService('SIGNATURE') if @shipment['signature_requested']
             xml.ShipSpecialService(@shipment['special_service']) if @shipment['special_service']
+            xml.DeclaredValue(sprintf("%.2f", @shipment['declared_value'])) if @shipment['declared_value']
             xml.Notes('NoteType' => @shipment['note_type'].to_s, 'NoteValue' => @shipment['note_value'].to_s)
 
-            xml.DeclaredValue(sprintf("%.2f", @shipment['declared_value'])) if @shipment['declared_value']
 
             xml.ValueAddedService(
               'Service'     => @shipment['service'],
