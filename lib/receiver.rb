@@ -23,4 +23,21 @@ class Receiver
       end
     end
   end
+
+  def receive_errors
+    queue = @sqs.queue(@queue_name)
+
+    5.times do
+      messages = queue.receive_messages(max_number_of_messages: @limit)
+      messages.each do |sqs_message|
+        msg = Messages::MessageParser.parse(sqs_message)
+
+        next if msg.empty?
+        next if msg[:document_type] != "error"
+        @count += 1
+
+        yield(msg)
+      end
+    end
+  end
 end

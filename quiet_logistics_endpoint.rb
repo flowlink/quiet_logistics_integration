@@ -220,15 +220,16 @@ class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
 
   post '/get_errors' do
     begin
-      msg    = @payload['message']
-      type   = msg['document_type']
+      queue = @config['ql_incoming_queue']
 
-      if type == 'error'
-        add_object(:error, msg)
-        message  = "Got error code #{msg['error_code']}"
-      end
+      receiver = Receiver.new(queue)
+      receiver.receive_errors { |msg| add_object :error_message, msg }
 
-      code = 500
+      message  = "Received #{receiver.count} error messages"
+      code     = 200
+    rescue => e
+      message  = e.message
+      code     = 500
     end
 
     result code, message
