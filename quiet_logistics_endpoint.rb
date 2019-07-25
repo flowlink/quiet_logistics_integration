@@ -222,7 +222,7 @@ class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
     begin
       queue = @config['ql_incoming_queue']
 
-      receiver = Receiver.new(queue)
+      receiver = Receiver.new(queue, @config['ql_message_iterations'])
       receiver.receive_errors { |msg| add_object :error_message, msg }
 
       message  = "Received #{receiver.count} error messages"

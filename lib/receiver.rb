@@ -28,7 +28,7 @@ class Receiver
   def receive_errors
     queue = @sqs.queue(@queue_name)
 
-    5.times do
+    @iterations.times do
       messages = queue.receive_messages(max_number_of_messages: @limit)
       messages.each do |sqs_message|
         msg = Messages::MessageParser.parse(sqs_message)
