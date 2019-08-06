@@ -29,9 +29,11 @@ class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
       queue = @config['ql_incoming_queue']
 
       receiver = Receiver.new(queue, @config['ql_message_iterations'])
-      receiver.receive_messages { |msg| add_object :message, msg }
+      receiver.receive_messages do |msg|
+        add_object :message, msg if is_regexp_match?(msg)
+      end
 
-      message  = "recevied #{receiver.count} messages"
+      message  = "received #{receiver.count} messages"
       code     = 200
     rescue => e
       message  = e.message
@@ -262,5 +264,13 @@ class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
 
   def outgoing_bucket
     @config['ql_outgoing_bucket']
+  end
+
+  def is_regexp_match?(msg)
+    return true unless config['regex_string']
+
+    return true if msg[:document_name].match(Regexp.new(config['regex_string']))
+
+    return false
   end
 end
