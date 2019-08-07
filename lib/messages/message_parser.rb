@@ -21,5 +21,17 @@ module Messages
 
       msg.to_h
     end
+    
+    def self.is_regexp_match?(msg, config)
+      return true unless config['regex_items'] && config['regex_items'] != ""
+
+      regex = JSON.parse(config['regex_items']).first[msg['document_type']]
+      
+      return false if regex.nil?
+
+      return true if msg["document_name"].match(Regexp.new(regex))
+
+      return false
+    end
   end
 end

@@ -31,7 +31,7 @@ class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
       message_count = 0
       receiver = Receiver.new(queue, @config['ql_message_iterations'])
       receiver.receive_messages do |msg|
-        if is_regexp_match?(msg, @config)
+        if Messages::MessageParser.is_regexp_match?(msg, @config)
           add_object :message, msg
           message_count += 1
         end
@@ -171,6 +171,8 @@ class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
         message  = "Got Shipment for #{msg['document_name']}"
       end
 
+      delete_message(config, payload) if msg['receipt_handle']
+
       code = 200
     rescue => e
       message  = e.message
@@ -194,6 +196,8 @@ class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
         message  = "Got inventory for #{msg['document_name']}"
       end
 
+      delete_message(config, payload) if msg['receipt_handle']
+
       code = 200
     rescue => e
       message  = e.backtrace
@@ -214,6 +218,8 @@ class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
         add_object(data.type.to_sym, data.to_flowlink_hash)
         message  = "Got Shipment Cancellation for #{msg['document_name']}"
       end
+
+      delete_message(config, payload) if msg['receipt_handle']
 
       code = 200
     rescue => e
@@ -253,6 +259,8 @@ class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
         message  = "Got RMAResult for #{msg['document_name']}"
       end
 
+      delete_message(config, payload) if msg['receipt_handle']
+
       code = 200
     rescue => e
       message  = e.message
@@ -269,12 +277,8 @@ class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
   def outgoing_bucket
     @config['ql_outgoing_bucket']
   end
-
-  def is_regexp_match?(msg, config)
-    return true unless config['regex_string']
-
-    return true if msg[:document_name].match(Regexp.new(config['regex_string']))
-
-    return false
+      
+  def delete_message(config, payload)
+    MessageDeleter.new(@config, @payload).delete_message
   end
 end
