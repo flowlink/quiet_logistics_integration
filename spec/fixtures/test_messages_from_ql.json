@@ -1,0 +1,38 @@
+[
+  {
+      "id": "46b5cffe-8115-4c38-9f75-e83ae8d92fd4",
+      "document_type": "ShipmentOrderResult",
+      "receipt_handle": "AQEBNH2MH0NOll8Kti3qrzuOdh7VyXkfuyWSQJSnCZ+Gpk8+xkJngYiVfAAjzebKt8jCg70JLKNtrJmBCCZaR4akarnaKpXsBIVYZLsRQex4x7EXMzO+saTDt1YuPouKqVY9J3yH6KuerKXhrxYEPUEv1vLps5lejfvn+q8M5X9CVKoozrmJzOD53d/yCi/8lSAOmgZ8sEKB6keGt2flJX5z7fDY+/rj0TXS5ZEAJ9kyiFaWwKwaOeixBBqcGI/M3Hma2JyRQC8kq+WIAzrDo5kywaxeVeozINz2QWjy4I5J9H2pOqUYkwvCmBB7wKsQiBbGgXHxUHebWG6w0+Tv9k2Fs2Cttmj5WHMP4IoSKRtZ3Td6Wxu47LLMksvZCbwHnSUSIG/LSeHVuG+VCKbG+GsKUw==",
+      "document_name": "SoResultV2_TEST_R192462_20190805_130239901.xml",
+      "business_unit": "TEST",
+      "warehouse": "ABC",
+      "message_date": "2019-08-04T17:02:44.1676862Z"
+  },
+  {
+    "id": "36b5cffe-8115-4c38-9f75-e83ae8d92fd4",
+    "document_type": "ShipmentOrderResult",
+    "receipt_handle": "BQEBNH2MH0NOll8Kti3qrzuOdh7VyXkfuyWSQJSnCZ+Gpk8+xkJngYiVfAAjzebKt8jCg70JLKNtrJmBCCZaR4akarnaKpXsBIVYZLsRQex4x7EXMzO+saTDt1YuPouKqVY9J3yH6KuerKXhrxYEPUEv1vLps5lejfvn+q8M5X9CVKoozrmJzOD53d/yCi/8lSAOmgZ8sEKB6keGt2flJX5z7fDY+/rj0TXS5ZEAJ9kyiFaWwKwaOeixBBqcGI/M3Hma2JyRQC8kq+WIAzrDo5kywaxeVeozINz2QWjy4I5J9H2pOqUYkwvCmBB7wKsQiBbGgXHxUHebWG6w0+Tv9k2Fs2Cttmj5WHMP4IoSKRtZ3Td6Wxu47LLMksvZCbwHnSUSIG/LSeHVuG+VCKbG+GsKUw==",
+    "document_name": "SoResultV2_TEST_192462_20190805_130239901.xml",
+    "business_unit": "TEST",
+    "warehouse": "ABC",
+    "message_date": "2019-08-05T17:02:44.1676862Z"
+},
+{
+  "id": "16b5cffe-8115-4c38-9f75-e83ae8d92fd4",
+  "document_type": "RMAResultDocument",
+  "receipt_handle": "CQEBNH2MH0NOll8Kti3qrzuOdh7VyXkfuyWSQJSnCZ+Gpk8+xkJngYiVfAAjzebKt8jCg70JLKNtrJmBCCZaR4akarnaKpXsBIVYZLsRQex4x7EXMzO+saTDt1YuPouKqVY9J3yH6KuerKXhrxYEPUEv1vLps5lejfvn+q8M5X9CVKoozrmJzOD53d/yCi/8lSAOmgZ8sEKB6keGt2flJX5z7fDY+/rj0TXS5ZEAJ9kyiFaWwKwaOeixBBqcGI/M3Hma2JyRQC8kq+WIAzrDo5kywaxeVeozINz2QWjy4I5J9H2pOqUYkwvCmBB7wKsQiBbGgXHxUHebWG6w0+Tv9k2Fs2Cttmj5WHMP4IoSKRtZ3Td6Wxu47LLMksvZCbwHnSUSIG/LSeHVuG+VCKbG+GsKUw==",
+  "document_name": "RmaResultV2_TEST_770617504_20190802_140906742.xml",
+  "business_unit": "TEST",
+  "warehouse": "ABC",
+  "message_date": "2019-08-01T17:02:44.1676862Z"
+},
+{
+  "id": "26b5cffe-8115-4c38-9f75-e83ae8d92fd4",
+  "document_type": "RMAResultDocument",
+  "receipt_handle": "DQEBNH2MH0NOll8Kti3qrzuOdh7VyXkfuyWSQJSnCZ+Gpk8+xkJngYiVfAAjzebKt8jCg70JLKNtrJmBCCZaR4akarnaKpXsBIVYZLsRQex4x7EXMzO+saTDt1YuPouKqVY9J3yH6KuerKXhrxYEPUEv1vLps5lejfvn+q8M5X9CVKoozrmJzOD53d/yCi/8lSAOmgZ8sEKB6keGt2flJX5z7fDY+/rj0TXS5ZEAJ9kyiFaWwKwaOeixBBqcGI/M3Hma2JyRQC8kq+WIAzrDo5kywaxeVeozINz2QWjy4I5J9H2pOqUYkwvCmBB7wKsQiBbGgXHxUHebWG6w0+Tv9k2Fs2Cttmj5WHMP4IoSKRtZ3Td6Wxu47LLMksvZCbwHnSUSIG/LSeHVuG+VCKbG+GsKUw==",
+  "document_name": "RmaResultV2_TEST_RA770617504_20190802_140906742.xml",
+  "business_unit": "TEST",
+  "warehouse": "ABC",
+  "message_date": "2019-08-03T17:02:44.1676862Z"
+}
+]

@@ -15,11 +15,12 @@ describe QuietLogisticsEndpoint do
     QuietLogisticsEndpoint
   end
 
-  let(:config) {{'amazon_access_key' => '123',
-                 'amazon_secret_key' => '123',
-                 'ql_outgoing_queue' => 'test_outgoing_queue',
-                 'ql_incoming_queue' => 'test_incoming_queue',
-                 'quiet_logistics.ql_outgoing_bucket' => 'test-outgoing-bucket',
-                 'quiet_logistics.ql_incoming_bucket' => 'test-incoming-bucket' }}
-
+  let(:config) {{
+    'amazon_access_key' => '123',
+    'amazon_secret_key' => '123',
+    'ql_outgoing_queue' => 'test_outgoing_queue',
+    'ql_incoming_queue' => 'test_incoming_queue',
+    'quiet_logistics.ql_outgoing_bucket' => 'test-outgoing-bucket',
+    'quiet_logistics.ql_incoming_bucket' => 'test-incoming-bucket'
+    }}
 end

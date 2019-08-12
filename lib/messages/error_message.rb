@@ -1,20 +1,20 @@
 module Messages
   class ErrorMessage
 
-    def initialize(doc, id)
+    def initialize(doc, id, receipt_handle)
       @sqs_id = id
-      @error_message = doc.xpath("//@ResultDescription").first.value
-      @response_date = doc.xpath("//@ResponseDate").first.value
-      @result_code = doc.xpath("//@ResultCode").first.value
-      @result_description = doc.xpath("//@ResultDescription").first.value
+      @receipt_handle = receipt_handle
+      @doc = doc
     end
 
     def to_h
       {
         id: @sqs_id,
         document_type: 'error',
-        error_code: @result_code,
-        error_description: @result_description
+        receipt_handle: @receipt_handle,
+        error_code: @doc.xpath("//@ResultCode").first.value,
+        error_description: @doc.xpath("//@ResultDescription").first.value,
+        response_date: @doc.xpath("//@ResponseDate").first.value
       }
     end
   end
