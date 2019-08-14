@@ -171,7 +171,9 @@ class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
         message  = "Got Shipment for #{msg['document_name']}"
       end
 
-      MessageDeleter.new(@config, @payload).delete_message if msg['receipt_handle']
+      unless @config['delete_message'] == '0'
+        MessageDeleter.new(@config, @payload).delete_message if msg['receipt_handle']
+      end
 
       code = 200
     rescue => e
@@ -196,7 +198,9 @@ class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
         message  = "Got inventory for #{msg['document_name']}"
       end
 
-      MessageDeleter.new(@config, @payload).delete_message if msg['receipt_handle']
+      unless @config['delete_message'] == '0'
+        MessageDeleter.new(@config, @payload).delete_message if msg['receipt_handle']
+      end
 
       code = 200
     rescue => e
@@ -219,7 +223,9 @@ class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
         message  = "Got Shipment Cancellation for #{msg['document_name']}"
       end
 
-      MessageDeleter.new(@config, @payload).delete_message if msg['receipt_handle']
+      unless @config['delete_message'] == '0'
+        MessageDeleter.new(@config, @payload).delete_message if msg['receipt_handle']
+      end
 
       code = 200
     rescue => e
@@ -259,7 +265,9 @@ class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
         message  = "Got RMAResult for #{msg['document_name']}"
       end
 
-      MessageDeleter.new(@config, @payload).delete_message(config, payload) if msg['receipt_handle']
+      unless @config['delete_message'] == '0'
+        MessageDeleter.new(@config, @payload).delete_message(config, payload) if msg['receipt_handle']
+      end
 
       code = 200
     rescue => e
