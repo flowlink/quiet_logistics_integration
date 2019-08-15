@@ -1,0 +1,484 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://sqs.<amazon_region>.amazonaws.com/630008457067/test_mackweldon_from_quiet
+    body:
+      encoding: UTF-8
+      string: Action=ReceiveMessage&MaxNumberOfMessages=10&QueueUrl=https%3A%2F%2Fsqs.<amazon_region>.amazonaws.com%2F630008457067%2Ftest_mackweldon_from_quiet&Version=2012-11-05
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=utf-8
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.30.0 ruby/2.3.3 x86_64-linux aws-sdk-sqs/1.7.0
+      Host:
+      - sqs.<amazon_region>.amazonaws.com
+      X-Amz-Date:
+      - 20190815T152829Z
+      X-Amz-Content-Sha256:
+      - e427658d6defb55f4327147fbd175571ca71f8eae322503a567cb602bd9930dc
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=<amazone_access_key>/20190815/<amazon_region>/sqs/aws4_request,
+        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date, Signature=6e7b04622bf29269816d626d0d4ad9d51fa6e239a2b90737d8f2f774777c36ec
+      Content-Length:
+      - '158'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amzn-Requestid:
+      - 07aa8a84-f7b4-5b7c-9855-df4b8bea4aed
+      Date:
+      - Thu, 15 Aug 2019 15:28:30 GMT
+      Content-Type:
+      - text/xml
+      Content-Length:
+      - '2766'
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version="1.0"?><ReceiveMessageResponse xmlns="http://queue.amazonaws.com/doc/2012-11-05/"><ReceiveMessageResult><Message><MessageId>b365af76-3646-41be-983f-acd2b5da1e63</MessageId><ReceiptHandle>AQEBHjFaogU0pAvHb+0zCbNf6p6MSJGg61U5JUrFEcWFPlBk+jPPoQqJP+s2zywYZT02FzCB2cWAJ2D5dlS+rftgOp9Be3oNOAd8N7S+r67UtZtGrRFvhurlkSPnapu0MBD/wlAat4MGSsuOy2ozC1EovLiLJtxX/HHaIuHaxvmJj9vQ+O2H+2/Spi3kOxeoD8+0KkrAvxPERExWulQfQa2cNj5X5gwCgpNzV6wVYFmGx9161l8T8SoI9L9bMQCS5nfC4lPv4vLBL17A+iGCzl29HNlw3/L52F5Hnr+GX1mjaMt0bsUltXMcJE3eeF3rGPu2QYTCO0sqiYdUC3VY5rfuAgtpxzOGtYRpiqtOXD2XHfEeh3cH2v7jsRgktkmInAiKMsRCdjDD22psSvTMOifwVQ==</ReceiptHandle><MD5OfBody>23690c0d3b20dbd8a47e52a06c879579</MD5OfBody><Body>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&#xD;
+        &lt;EventMessage xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; MessageId=&quot;62a2bb6b-37db-43ba-b971-a010505e0592&quot; MessageDate=&quot;2019-08-12T16:11:46.2708199Z&quot; DocumentType=&quot;ShipmentOrderResult&quot; ClientId=&quot;<client_id>&quot; BusinessUnit=&quot;<client_id>&quot; Warehouse=&quot;DVN&quot; DocumentName=&quot;SoResultV2_<client_id>_192153_20190812_121125472.xml&quot; xmlns=&quot;http://schemas.quietlogistics.com/V2/EventMessage.xsd&quot;&gt;&#xD;
+          &lt;Extension /&gt;&#xD;
+        &lt;/EventMessage&gt;</Body></Message><Message><MessageId>1a7f5dd9-a25a-43f0-9643-6e0697e3f455</MessageId><ReceiptHandle>AQEB+sWgCrFWF8yZZa3fhaAp/iWUAk4Al/OZJhXqpVH3dsCXVqft3XKfs/ak/k9mH4/tlkxGxBI0JThROZuYnDN/I754vcvyfBS/zj2gI7kfP1swfpMBEMJyZM360OQy28yu/rmkTuluCpJcR4EYUutoSie9E4g0weVnA2rf+aNqfxgyWx2b9g9H2czIbnIlkVyGrPOt0kmq2ZgHyDBypGUbKtvfmrQpT3+UCebWWUUAHh9nnyd74ZArQY3kWO6KeGtYYgAnES5lugqrWzLi9yeNGTInHYsmtjYOQzH7++KsRvJaozNIg7eNdv+jb8yYvU3OdIuiXJVXzMFyOn+AfdP+qckeviuTk6KNO99okW/gWZwWwSQnmDyt7wKuDQu7mt1d7Ig31PvvA8ZjdrSZEx4+bw==</ReceiptHandle><MD5OfBody>f31dfa6bd055ab3d1289099bc87076c7</MD5OfBody><Body>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&#xD;
+        &lt;EventMessage xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; MessageId=&quot;131ac224-4ee4-44dd-ae28-5bd25ccdf49e&quot; MessageDate=&quot;2019-08-12T16:12:47.6810064Z&quot; DocumentType=&quot;ShipmentOrderResult&quot; ClientId=&quot;<client_id>&quot; BusinessUnit=&quot;<client_id>&quot; Warehouse=&quot;DVN&quot; DocumentName=&quot;SoResultV2_<client_id>_192160_20190812_121234765.xml&quot; xmlns=&quot;http://schemas.quietlogistics.com/V2/EventMessage.xsd&quot;&gt;&#xD;
+          &lt;Extension /&gt;&#xD;
+        &lt;/EventMessage&gt;</Body></Message></ReceiveMessageResult><ResponseMetadata><RequestId>07aa8a84-f7b4-5b7c-9855-df4b8bea4aed</RequestId></ResponseMetadata></ReceiveMessageResponse>
+    http_version: 
+  recorded_at: Thu, 15 Aug 2019 15:28:30 GMT
+- request:
+    method: post
+    uri: https://sqs.<amazon_region>.amazonaws.com/630008457067/test_mackweldon_from_quiet
+    body:
+      encoding: UTF-8
+      string: Action=ReceiveMessage&MaxNumberOfMessages=10&QueueUrl=https%3A%2F%2Fsqs.<amazon_region>.amazonaws.com%2F630008457067%2Ftest_mackweldon_from_quiet&Version=2012-11-05
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=utf-8
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.30.0 ruby/2.3.3 x86_64-linux aws-sdk-sqs/1.7.0
+      Host:
+      - sqs.<amazon_region>.amazonaws.com
+      X-Amz-Date:
+      - 20190815T152830Z
+      X-Amz-Content-Sha256:
+      - e427658d6defb55f4327147fbd175571ca71f8eae322503a567cb602bd9930dc
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=<amazone_access_key>/20190815/<amazon_region>/sqs/aws4_request,
+        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date, Signature=862609718ded57514f1dd27a5f99afec41e9979a7d4c812fcca68e4e754550a4
+      Content-Length:
+      - '158'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amzn-Requestid:
+      - 25058b5d-3107-5264-8fa0-de924d59de17
+      Date:
+      - Thu, 15 Aug 2019 15:28:30 GMT
+      Content-Type:
+      - text/xml
+      Content-Length:
+      - '3989'
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version="1.0"?><ReceiveMessageResponse xmlns="http://queue.amazonaws.com/doc/2012-11-05/"><ReceiveMessageResult><Message><MessageId>6612839c-7d07-44fa-a6cd-bb11bd0ecc47</MessageId><ReceiptHandle>AQEBiXvboEySu5KY8j4Isxa2zm4rMSm20wovUqHT/0QMNVzy9Vtbk7FvTSeJTJH8hwY2hrW31TnUuEdi88/x/8lUa4fvHmyBYxsMIOLcGeWrBvZYjT61NO0QLXLGqR2zLFscBiOcrUeLLFrIXWCmyk1vc4KFs8BpYTXbYEnLS5w9WU6rjpxLsVXAv9+Y77VaQ2K0EnAkk3yXG24rIuBYzlhUGhJn+yrgjamZhlEVtmD3GZHJNK7wsE8dwi66MAg2OvwH8sMpM/0aAe2avEtNi3MMVFPnIEGRlZN91vJD64rMW09hvTaq4dE2dC5tvajG4r1Vz6f9yVsISfndOew/yxFtm2c5gTqT6XGprjMuXhz0nPPJ2YUgwRFvxcT/LOnptUUiN7/wRWHAdQVWFYbXQAse9A==</ReceiptHandle><MD5OfBody>ed9b2f7997b19da495097eef80f12f86</MD5OfBody><Body>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&#xD;
+        &lt;EventMessage xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; MessageId=&quot;4cd047b5-bc63-432c-97a4-1201a25b689d&quot; MessageDate=&quot;2019-08-12T16:13:18.2425253Z&quot; DocumentType=&quot;ShipmentOrderResult&quot; ClientId=&quot;<client_id>&quot; BusinessUnit=&quot;<client_id>&quot; Warehouse=&quot;DVN&quot; DocumentName=&quot;SoResultV2_<client_id>_2041_20190812_121251435.xml&quot; xmlns=&quot;http://schemas.quietlogistics.com/V2/EventMessage.xsd&quot;&gt;&#xD;
+          &lt;Extension /&gt;&#xD;
+        &lt;/EventMessage&gt;</Body></Message><Message><MessageId>216a7edf-2e6c-457e-900d-aa1826b70e3d</MessageId><ReceiptHandle>AQEBy8tL9/8pZWVn7HiwFDtzNiH0eVjC5xSGqvpVZ1/9Nms+JE9OsNOhalQDmrpQdRzS6rkfK2me90zmTflYcTG3o3xYIoG4KzrW4XKW3FVBlId9deqUZaHRHE4TBLiv5kIkJEALwHvAR5zoehfR4igvkz5H+U0uBUIFtW8JnK3Y/ehmfkf2JQ3l1g33w5sNvEHUBEFVLTAN/AeyOo71KL2CZhwsxjgFZwOyoUF8/O9VXO4LzWqQHqDYDZg92BwB6ud5gZpx/77f3H41Sf+bqmMjgYUKiV6kS/j8lpOj8QfmSNj1WfB4i8fLAdbb+gF2aev/HH556PtkCHH3T+jnPTV6kcMtuSo2CvZZpgfYuIHRNk20Qik75qIQPNrcG8+6a1TWQE5S6zBWX9c0qUGpLGj2LA==</ReceiptHandle><MD5OfBody>321287f17e4e8212f47671b25c9eca85</MD5OfBody><Body>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&#xD;
+        &lt;EventMessage xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; MessageId=&quot;820a637d-1faa-4631-8387-34817b21543c&quot; MessageDate=&quot;2019-08-12T16:10:15.8030041Z&quot; DocumentType=&quot;ShipmentOrderResult&quot; ClientId=&quot;<client_id>&quot; BusinessUnit=&quot;<client_id>&quot; Warehouse=&quot;DVN&quot; DocumentName=&quot;SoResultV2_<client_id>_192152_20190812_121015161.xml&quot; xmlns=&quot;http://schemas.quietlogistics.com/V2/EventMessage.xsd&quot;&gt;&#xD;
+          &lt;Extension /&gt;&#xD;
+        &lt;/EventMessage&gt;</Body></Message><Message><MessageId>8c42dfb7-940a-49f7-9014-75b74ae1ea43</MessageId><ReceiptHandle>AQEBae1ss1KLKQUV5OF0EGRLfi6AcMl5/cP5nYEimqSqoSp2joqOAGJN4+hd/NXfDOQgfoXYyRBrujmVBGotVSy27tZCY+dIYtzbwPDnGPBS9rQAKNuT1MB8Hj5ihcxCqSj95kEfrrmFWDdivTYdw+2QMXha1fPTpPenLZm0hTmzorqAQoj5kA0bKv2AxWzPnoDSjpGIMOay7RjratNHxkTq6nU5WvCGrfNDEzoiQn71GxIDDNz2HdILnNRbMHveq4hLV8bx0ai4uvVRRUChHtqqqxdUulIoyD0H8BoZghKJyX9vtKwhrC7LBQZDg+AQj5KwrSDIC5diL132XhHHkSBbJS4JQ6zB2ZTk4GeUgkPs54UrHVVROLJ74Uzj0/JbpIrtu1Aoe1l2t5YiZMkYMYZ8sQ==</ReceiptHandle><MD5OfBody>23fc1dc8779e004d5d92a9986c0bbb16</MD5OfBody><Body>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        &lt;EventMessage xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot;
+        xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; MessageId=&quot;ABC123&quot;
+        MessageDate=&quot;2019-08-06T14:58:11.5577988Z&quot; DocumentType=&quot;ShipmentOrderResult&quot;
+        ClientId=&quot;<client_id>&quot; BusinessUnit=&quot;<client_id>&quot; Warehouse=&quot;DVN&quot;
+        DocumentName=&quot;SoResultV2_<client_id>_R494571063-H13042707831_20190806_105849697.xml&quot; xmlns=&quot;http://schemas.quietlogistics.com/V2/EventMessage.xsd&quot;&gt;
+          &lt;Extension /&gt;
+        &lt;/EventMessage&gt;
+        </Body></Message></ReceiveMessageResult><ResponseMetadata><RequestId>25058b5d-3107-5264-8fa0-de924d59de17</RequestId></ResponseMetadata></ReceiveMessageResponse>
+    http_version: 
+  recorded_at: Thu, 15 Aug 2019 15:28:30 GMT
+- request:
+    method: post
+    uri: https://sqs.<amazon_region>.amazonaws.com/630008457067/test_mackweldon_from_quiet
+    body:
+      encoding: UTF-8
+      string: Action=ReceiveMessage&MaxNumberOfMessages=10&QueueUrl=https%3A%2F%2Fsqs.<amazon_region>.amazonaws.com%2F630008457067%2Ftest_mackweldon_from_quiet&Version=2012-11-05
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=utf-8
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.30.0 ruby/2.3.3 x86_64-linux aws-sdk-sqs/1.7.0
+      Host:
+      - sqs.<amazon_region>.amazonaws.com
+      X-Amz-Date:
+      - 20190815T152830Z
+      X-Amz-Content-Sha256:
+      - e427658d6defb55f4327147fbd175571ca71f8eae322503a567cb602bd9930dc
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=<amazone_access_key>/20190815/<amazon_region>/sqs/aws4_request,
+        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date, Signature=862609718ded57514f1dd27a5f99afec41e9979a7d4c812fcca68e4e754550a4
+      Content-Length:
+      - '158'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amzn-Requestid:
+      - c3b938e8-5234-5dfe-ba1b-6d272e6a7903
+      Date:
+      - Thu, 15 Aug 2019 15:28:30 GMT
+      Content-Type:
+      - text/xml
+      Content-Length:
+      - '1512'
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version="1.0"?><ReceiveMessageResponse xmlns="http://queue.amazonaws.com/doc/2012-11-05/"><ReceiveMessageResult><Message><MessageId>c25906ee-5073-496d-9748-2443211afdf7</MessageId><ReceiptHandle>AQEBDs49eABBzizINGAquRljJMx7nBGZzEdf9P/OE542wD/CVlHtUID9Ie8VhZWL6AkTFZQCXbhxCsSsEqtupedF3wuR+D7RPRirtXZLPeTYZsvVW+3Iq82PXfJg50VEpAxpML+gdqtLbq7kBNSmVcSz4tegx3nhMiZ0/Xb+a/cW9AD1JJhI7McbZSSolW9gu3cJmD8yK7+dMirTLvy5Mo5tZxqAMVTaWaTHHtKDmMEx25CtjsE2gmziFeV1JubKNIcjtt824jOhbLn06p2wJa8yWP3bqzLK8fyo72rVZEaJwqxQi8rxhGxyOyYJeg+it5LxCZY6TxeIZythU0cO3TMeCk3KDAFhD68dD/I7gFeOWBsuJpsSkXVUHEFQmo3vxeGVISElW91sWaTS3Kbca/H4ug==</ReceiptHandle><MD5OfBody>431e06dffdf42aa1e66678413b7cf7c4</MD5OfBody><Body>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&#xD;
+        &lt;EventMessage xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; MessageId=&quot;54d657fd-654b-4b47-8433-90566b627559&quot; MessageDate=&quot;2019-08-12T16:09:15.1307127Z&quot; DocumentType=&quot;ShipmentOrderResult&quot; ClientId=&quot;<client_id>&quot; BusinessUnit=&quot;<client_id>&quot; Warehouse=&quot;DVN&quot; DocumentName=&quot;SoResultV2_<client_id>_6125_20190812_120854601.xml&quot; xmlns=&quot;http://schemas.quietlogistics.com/V2/EventMessage.xsd&quot;&gt;&#xD;
+          &lt;Extension /&gt;&#xD;
+        &lt;/EventMessage&gt;</Body></Message></ReceiveMessageResult><ResponseMetadata><RequestId>c3b938e8-5234-5dfe-ba1b-6d272e6a7903</RequestId></ResponseMetadata></ReceiveMessageResponse>
+    http_version: 
+  recorded_at: Thu, 15 Aug 2019 15:28:30 GMT
+- request:
+    method: post
+    uri: https://sqs.<amazon_region>.amazonaws.com/630008457067/test_mackweldon_from_quiet
+    body:
+      encoding: UTF-8
+      string: Action=ReceiveMessage&MaxNumberOfMessages=10&QueueUrl=https%3A%2F%2Fsqs.<amazon_region>.amazonaws.com%2F630008457067%2Ftest_mackweldon_from_quiet&Version=2012-11-05
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=utf-8
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.30.0 ruby/2.3.3 x86_64-linux aws-sdk-sqs/1.7.0
+      Host:
+      - sqs.<amazon_region>.amazonaws.com
+      X-Amz-Date:
+      - 20190815T152830Z
+      X-Amz-Content-Sha256:
+      - e427658d6defb55f4327147fbd175571ca71f8eae322503a567cb602bd9930dc
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=<amazone_access_key>/20190815/<amazon_region>/sqs/aws4_request,
+        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date, Signature=862609718ded57514f1dd27a5f99afec41e9979a7d4c812fcca68e4e754550a4
+      Content-Length:
+      - '158'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amzn-Requestid:
+      - a21f112e-e384-5525-86ef-44e19fdb8951
+      Date:
+      - Thu, 15 Aug 2019 15:28:31 GMT
+      Content-Type:
+      - text/xml
+      Content-Length:
+      - '1531'
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version="1.0"?><ReceiveMessageResponse xmlns="http://queue.amazonaws.com/doc/2012-11-05/"><ReceiveMessageResult><Message><MessageId>c9e80ebc-7b96-4810-aba5-d129387d1a00</MessageId><ReceiptHandle>AQEBgrojR4xn4QKlM28/i2vVK5XW/Rx3nDc8euOPGqR+tytnFv2jUZ2foIo5BK60mYwJ1aXt5GqDAfo8rokQwmRAsi0+xhllJVV/1ZIBQsY08qAT62/tM1i8h6QOTkhoxzYwMM1se8codG/hotTn5VCN+PiqMkVzh0B0heYHaGr+ZfPbHsed4sIYDJBcNLV65JnkMm2BW2pQZ+7jh++Zi4+9K59q1NI26Ju4GJ/9vS6gk3WsQHDqnFsQlYnaykTDeSANjqiXaxkVOkOrtN9muy1qH5YpRnzZktSdqOLP3Aka0dbODVBhrnN3rFfLK7ai3AvEPgAeOTy/9iWgq1+LpU2NxI0KNTDCKOF+ngHVFleIyWx1HH28KbfjbLg8NG4N6lLZejioojD/J7cM7Zw7NXK/3g==</ReceiptHandle><MD5OfBody>a9dd99bd8641a19b3df3b90bf410d277</MD5OfBody><Body>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&#xD;
+        &lt;EventMessage xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; MessageId=&quot;6b9f2760-9759-4057-8aa0-da00bea51af8&quot; MessageDate=&quot;2019-08-12T16:12:48.0434895Z&quot; DocumentType=&quot;ShipmentOrderResult&quot; ClientId=&quot;<client_id>&quot; BusinessUnit=&quot;<client_id>&quot; Warehouse=&quot;DVN&quot; DocumentName=&quot;SoResultV2_<client_id>_R712449277-H36307541617_20190812_121233335.xml&quot; xmlns=&quot;http://schemas.quietlogistics.com/V2/EventMessage.xsd&quot;&gt;&#xD;
+          &lt;Extension /&gt;&#xD;
+        &lt;/EventMessage&gt;</Body></Message></ReceiveMessageResult><ResponseMetadata><RequestId>a21f112e-e384-5525-86ef-44e19fdb8951</RequestId></ResponseMetadata></ReceiveMessageResponse>
+    http_version: 
+  recorded_at: Thu, 15 Aug 2019 15:28:31 GMT
+- request:
+    method: get
+    uri: https://<ql_incoming_bucket>.s3.amazonaws.com/SoResultV2_<client_id>_192153_20190812_121125472.xml
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.30.0 ruby/2.3.3 x86_64-linux aws-sdk-s3/1.21.0
+      Host:
+      - "<ql_incoming_bucket>.s3.amazonaws.com"
+      X-Amz-Date:
+      - 20190815T152831Z
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=<amazone_access_key>/20190815/<amazon_region>/s3/aws4_request,
+        SignedHeaders=host;user-agent;x-amz-content-sha256;x-amz-date, Signature=c6d3fc67c6fbaa924e1f6348cf4c1eea76c1c8de5956505883b0c8da2ff7f1b2
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amz-Id-2:
+      - z1LlkSvScvw4FTyD2nhIlqEvN9b4Ws9PrNOP0XYZLKCbTFl0s4/ce2hAD9Ve9/xG7SMS7rJ8fPM=
+      X-Amz-Request-Id:
+      - A59294168FC4047A
+      Date:
+      - Thu, 15 Aug 2019 15:28:32 GMT
+      Last-Modified:
+      - Mon, 12 Aug 2019 16:11:47 GMT
+      X-Amz-Expiration:
+      - expiry-date="Tue, 27 Aug 2019 00:00:00 GMT", rule-id="OTZjMjUwZTctMDJiYi00NWFkLTgxNGYtM2UxYzQ1MzNhMGVl"
+      Etag:
+      - '"e4fc318459dc12fc6f0136058dcb4dab"'
+      X-Amz-Meta-Title:
+      - SoResultV2_<client_id>_192153_20190812_121125472.xml
+      Accept-Ranges:
+      - bytes
+      Content-Type:
+      - text/xml
+      Content-Length:
+      - '996'
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<SOResult xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"
+        xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" ClientID=\"<client_id>\"
+        BusinessUnit=\"<client_id>\" OrderNumber=\"192153\" DateShipped=\"1980-01-01T05:00:00Z\"
+        FreightCost=\"0\" CartonCount=\"1\" Warehouse=\"DVN\" xmlns=\"http://schemas.quiettechnology.com/V2/SOResultDocument.xsd\">\r\n
+        \ <Line Line=\"1\" ItemNumber=\"M01S89-GHSPL\" Quantity=\"1\" ExceptionCode=\"\"
+        Tax=\"0\" Total=\"24.0000\" SubstitutedItem=\"\" />\r\n  <Line Line=\"2\"
+        ItemNumber=\"M01B86-SMDB-M\" Quantity=\"1\" ExceptionCode=\"\" Tax=\"0\" Total=\"24.0000\"
+        SubstitutedItem=\"\" />\r\n  <Carton CartonId=\"S99192153-2019081211\" TrackingId=\"1Z1006881330002019081211\"
+        Carrier=\"USPS\" CartonNumber=\"1\" ServiceLevel=\"FIRST\" Weight=\"1.2\"
+        FreightCost=\"3.05\" HandlingFee=\"0\" Surcharge=\"0\">\r\n    <Content Line=\"1\"
+        ItemNumber=\"M01S89-GHSPL\" Quantity=\"1\" />\r\n    <Content Line=\"2\" ItemNumber=\"M01B86-SMDB-M\"
+        Quantity=\"1\" />\r\n  </Carton>\r\n  <Extension>192153</Extension>\r\n</SOResult>"
+    http_version: 
+  recorded_at: Thu, 15 Aug 2019 15:28:31 GMT
+- request:
+    method: post
+    uri: https://sqs.<amazon_region>.amazonaws.com/630008457067/test_mackweldon_from_quiet
+    body:
+      encoding: UTF-8
+      string: Action=ReceiveMessage&MaxNumberOfMessages=10&QueueUrl=https%3A%2F%2Fsqs.<amazon_region>.amazonaws.com%2F630008457067%2Ftest_mackweldon_from_quiet&Version=2012-11-05
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=utf-8
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.30.0 ruby/2.3.3 x86_64-linux aws-sdk-sqs/1.7.0
+      Host:
+      - sqs.<amazon_region>.amazonaws.com
+      X-Amz-Date:
+      - 20190815T152901Z
+      X-Amz-Content-Sha256:
+      - e427658d6defb55f4327147fbd175571ca71f8eae322503a567cb602bd9930dc
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=<amazone_access_key>/20190815/<amazon_region>/sqs/aws4_request,
+        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date, Signature=6792df4bfe015f66028685694486c9bf03de0726dc75a357598761e226a77e7c
+      Content-Length:
+      - '158'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amzn-Requestid:
+      - '095f5ead-d8f7-5440-83fe-0b62a489f115'
+      Date:
+      - Thu, 15 Aug 2019 15:29:02 GMT
+      Content-Type:
+      - text/xml
+      Content-Length:
+      - '1514'
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version="1.0"?><ReceiveMessageResponse xmlns="http://queue.amazonaws.com/doc/2012-11-05/"><ReceiveMessageResult><Message><MessageId>0146b7fb-269b-4869-b76b-cf7fc5b15213</MessageId><ReceiptHandle>AQEBGS/SimYo82rz0g0v3e8BU+rMwIcdM9AR0qkMxmofqWXnzkxjTbrjoI2XEQPaF6XmUgB/K5OOuIwqvWAaYHiK8kTfIynk2TNpuiPXTAAPfOF7jRLF6+PfobFEcw8tw8X2HWuWCvK0clD503RkYZpxBn0EW23NsKU2EfparUrvShtVXcLjdEBZzG32PxwPU8uTPXxsaUUdERQ3XVUUQv0rxa4C4kQ7fiiaLwMwzTtO69C6JSV5Qu2mgq7ZM2S+4C3IcAUNDYMSWhFif3AB7N/OweRlbdIbRpaCRr951JISnhlv7CmcH9sGKbzbEX7gEH8k8ejUxTxXIRUSH9FTue83a96ONROuPV7kQMKPIVUGB7D+C4o+oqYL42mLQhLXR9GkJbVWk4Y1Y6SPId4X+zztyA==</ReceiptHandle><MD5OfBody>03d64ef67c619693776721d2d0b6ad29</MD5OfBody><Body>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&#xD;
+        &lt;EventMessage xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; MessageId=&quot;e80c469d-e292-4868-9764-d13ef6c85c21&quot; MessageDate=&quot;2019-08-12T16:11:46.5609295Z&quot; DocumentType=&quot;ShipmentOrderResult&quot; ClientId=&quot;<client_id>&quot; BusinessUnit=&quot;<client_id>&quot; Warehouse=&quot;DVN&quot; DocumentName=&quot;SoResultV2_<client_id>_192155_20190812_121140070.xml&quot; xmlns=&quot;http://schemas.quietlogistics.com/V2/EventMessage.xsd&quot;&gt;&#xD;
+          &lt;Extension /&gt;&#xD;
+        &lt;/EventMessage&gt;</Body></Message></ReceiveMessageResult><ResponseMetadata><RequestId>095f5ead-d8f7-5440-83fe-0b62a489f115</RequestId></ResponseMetadata></ReceiveMessageResponse>
+    http_version: 
+  recorded_at: Thu, 15 Aug 2019 15:29:02 GMT
+- request:
+    method: post
+    uri: https://sqs.<amazon_region>.amazonaws.com/630008457067/test_mackweldon_from_quiet
+    body:
+      encoding: UTF-8
+      string: Action=ReceiveMessage&MaxNumberOfMessages=10&QueueUrl=https%3A%2F%2Fsqs.<amazon_region>.amazonaws.com%2F630008457067%2Ftest_mackweldon_from_quiet&Version=2012-11-05
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=utf-8
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.30.0 ruby/2.3.3 x86_64-linux aws-sdk-sqs/1.7.0
+      Host:
+      - sqs.<amazon_region>.amazonaws.com
+      X-Amz-Date:
+      - 20190815T152902Z
+      X-Amz-Content-Sha256:
+      - e427658d6defb55f4327147fbd175571ca71f8eae322503a567cb602bd9930dc
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=<amazone_access_key>/20190815/<amazon_region>/sqs/aws4_request,
+        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date, Signature=16acf640230ac560b7be774c7ab205a1ca6f8a518ce736152e4f039b8ca490ed
+      Content-Length:
+      - '158'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amzn-Requestid:
+      - 6290d91d-8be2-54dc-b562-8cd2f79cd263
+      Date:
+      - Thu, 15 Aug 2019 15:29:02 GMT
+      Content-Type:
+      - text/xml
+      Content-Length:
+      - '3989'
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version="1.0"?><ReceiveMessageResponse xmlns="http://queue.amazonaws.com/doc/2012-11-05/"><ReceiveMessageResult><Message><MessageId>6612839c-7d07-44fa-a6cd-bb11bd0ecc47</MessageId><ReceiptHandle>AQEBJx15Lm7NrQcuh2/Xb7M7ecgXKniPBcR2Vv3KeJpL2GYhEAgsO6DG10oB2aL3W5Q/gjp/sDhoYBYcKvj1xFtnN12F0fsilSxF/ojHwVns2VmSf+nS1bhvEl9tHpI6jSjZMzXFFgCi2PaqtxKBGXmkJrPGRTKMw/J5+7HTwCOqD9S291LFuWlFKT/rLYOJsG/ZXJJfhFwV2eh+D2bHFNUI6bsFMu4vL0nuA1ZnuKtkv+On6k7jTKmdfqvnCDoOcZ6poFaG6K1OpdPKBdzQ8FLQoMm9FqnuSrxt4k/UVqGjbi1Wl4ZklWVRRRZVt2WGsWcfsF8y029cPsPrHG7vb2D+K4E0oM7KgxN4TEZGmeVs6Q8t7D6ZBXEpQquADVfG9qP1wF3+vL1jzBcOG2SYzud4jQ==</ReceiptHandle><MD5OfBody>ed9b2f7997b19da495097eef80f12f86</MD5OfBody><Body>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&#xD;
+        &lt;EventMessage xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; MessageId=&quot;4cd047b5-bc63-432c-97a4-1201a25b689d&quot; MessageDate=&quot;2019-08-12T16:13:18.2425253Z&quot; DocumentType=&quot;ShipmentOrderResult&quot; ClientId=&quot;<client_id>&quot; BusinessUnit=&quot;<client_id>&quot; Warehouse=&quot;DVN&quot; DocumentName=&quot;SoResultV2_<client_id>_2041_20190812_121251435.xml&quot; xmlns=&quot;http://schemas.quietlogistics.com/V2/EventMessage.xsd&quot;&gt;&#xD;
+          &lt;Extension /&gt;&#xD;
+        &lt;/EventMessage&gt;</Body></Message><Message><MessageId>216a7edf-2e6c-457e-900d-aa1826b70e3d</MessageId><ReceiptHandle>AQEBay+vSQzclsedYvc6jM6IddYnCxicZJ34Rm4ok6PPV9crIC/6q9RXYGJcoYwlz72vuA5QRFNY3f+LqaXaiBPwpFptKAFMdbjgAgR0n0K5aaY2jdD7FeDt/ujj5VUV31nunlDMX/Ao82JQ2rPG8iAu1w6YCjIuVu1aY1b4kdrOccRqmqxSGMSTa0yGESaBkGSmnhMIAeaCpr44VHssxVWhsKqyCmrXIxAEQV8u8cLstUROKWx7hSDZ4/94RIaEbHAXV2KE4aONPGBuoaARVfeqzSKpM+hX/MJvHknJf7ccU0RoyW5/415JSwTMOkNp0J5/JbRLkNTy4/uH1Sma5rqTeYQFCOq8X0o6VYyY5d/R+VZJDl2uNkHcEzdROFffa/5WacJeLgRrq2MkPkhWZVn1zA==</ReceiptHandle><MD5OfBody>321287f17e4e8212f47671b25c9eca85</MD5OfBody><Body>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&#xD;
+        &lt;EventMessage xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; MessageId=&quot;820a637d-1faa-4631-8387-34817b21543c&quot; MessageDate=&quot;2019-08-12T16:10:15.8030041Z&quot; DocumentType=&quot;ShipmentOrderResult&quot; ClientId=&quot;<client_id>&quot; BusinessUnit=&quot;<client_id>&quot; Warehouse=&quot;DVN&quot; DocumentName=&quot;SoResultV2_<client_id>_192152_20190812_121015161.xml&quot; xmlns=&quot;http://schemas.quietlogistics.com/V2/EventMessage.xsd&quot;&gt;&#xD;
+          &lt;Extension /&gt;&#xD;
+        &lt;/EventMessage&gt;</Body></Message><Message><MessageId>8c42dfb7-940a-49f7-9014-75b74ae1ea43</MessageId><ReceiptHandle>AQEBeX29ahG87x4Cugz8YfbnWISIsq446aUEtjFeX2UXuoLS0k9z6P0pBGZX9XROKAVullvQjRMJoqEIjpPN52CqFVzoAhhA2ZKILpn0+JxZ5qiPpiNGn87aVIbfOBIO8Yd9g7emx3MxuYTlTkbq2FtbFznu2PCVK+MOjXQrICyeRDL4pRdDFyyNpuDxYrbpIisx8+ogByvIlfZ1/cvuQBnK/H3WOhOVlx/GfUWP4f7NeH1RXYGJpDnGj6JBml1F65vFY7cmNnek6WsM3S+b6OjfgIMwXlcFRX355FFTwGbhdiNW0rV5K3xXKdrR6tvV/NURt9bN0iYgaLoQRvceXMF6uCAbQWnJedmb6MdnN3Ul81/TgI3VMfOl084IOWilPVbTbKq3NXqGOoDtpLA/1FgcCw==</ReceiptHandle><MD5OfBody>23fc1dc8779e004d5d92a9986c0bbb16</MD5OfBody><Body>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        &lt;EventMessage xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot;
+        xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; MessageId=&quot;ABC123&quot;
+        MessageDate=&quot;2019-08-06T14:58:11.5577988Z&quot; DocumentType=&quot;ShipmentOrderResult&quot;
+        ClientId=&quot;<client_id>&quot; BusinessUnit=&quot;<client_id>&quot; Warehouse=&quot;DVN&quot;
+        DocumentName=&quot;SoResultV2_<client_id>_R494571063-H13042707831_20190806_105849697.xml&quot; xmlns=&quot;http://schemas.quietlogistics.com/V2/EventMessage.xsd&quot;&gt;
+          &lt;Extension /&gt;
+        &lt;/EventMessage&gt;
+        </Body></Message></ReceiveMessageResult><ResponseMetadata><RequestId>6290d91d-8be2-54dc-b562-8cd2f79cd263</RequestId></ResponseMetadata></ReceiveMessageResponse>
+    http_version: 
+  recorded_at: Thu, 15 Aug 2019 15:29:02 GMT
+- request:
+    method: post
+    uri: https://sqs.<amazon_region>.amazonaws.com/630008457067/test_mackweldon_from_quiet
+    body:
+      encoding: UTF-8
+      string: Action=ReceiveMessage&MaxNumberOfMessages=10&QueueUrl=https%3A%2F%2Fsqs.<amazon_region>.amazonaws.com%2F630008457067%2Ftest_mackweldon_from_quiet&Version=2012-11-05
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=utf-8
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.30.0 ruby/2.3.3 x86_64-linux aws-sdk-sqs/1.7.0
+      Host:
+      - sqs.<amazon_region>.amazonaws.com
+      X-Amz-Date:
+      - 20190815T152902Z
+      X-Amz-Content-Sha256:
+      - e427658d6defb55f4327147fbd175571ca71f8eae322503a567cb602bd9930dc
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=<amazone_access_key>/20190815/<amazon_region>/sqs/aws4_request,
+        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date, Signature=16acf640230ac560b7be774c7ab205a1ca6f8a518ce736152e4f039b8ca490ed
+      Content-Length:
+      - '158'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amzn-Requestid:
+      - d4c66627-ae28-50e8-8839-33e8d257353f
+      Date:
+      - Thu, 15 Aug 2019 15:29:03 GMT
+      Content-Type:
+      - text/xml
+      Content-Length:
+      - '1512'
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version="1.0"?><ReceiveMessageResponse xmlns="http://queue.amazonaws.com/doc/2012-11-05/"><ReceiveMessageResult><Message><MessageId>c25906ee-5073-496d-9748-2443211afdf7</MessageId><ReceiptHandle>AQEB8Stkt2z/rYr1rZcgvdkYsCAmm0vvu0SVUSld7pX0Vtl2VzKtlCavKNnuqZqPJR0/HTSR5FImCrfMVEsg358Ca33nBNCbdpadCix4zxoKBSgMsbwsM9Uim3LaoIxk81uc/p3cv0W3qgBFbAkjNqq//rwc4sp0TGbIfRELHWGa/haMrsLT+BYBb9iExgPlSOmdKt4fOmUUrpj/1i4s3+aFnT+WTGzkp/W7yMvvHhm5OoUFYiAtQKkayfzQRpYKSHhiBtWz4rBIfl1y76KH2ji0/1+YAb27CRJGQoz+ET5hTlTXCEO/dBcCjme4ne8REair9J5p+OkyAAZw18nluKflPnYtFY/yOiAIoVqMRZVPDrht0SSEPbGlKOEg3kByTeAiKgRrRT5T+9R95tYNTv4XTg==</ReceiptHandle><MD5OfBody>431e06dffdf42aa1e66678413b7cf7c4</MD5OfBody><Body>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&#xD;
+        &lt;EventMessage xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; MessageId=&quot;54d657fd-654b-4b47-8433-90566b627559&quot; MessageDate=&quot;2019-08-12T16:09:15.1307127Z&quot; DocumentType=&quot;ShipmentOrderResult&quot; ClientId=&quot;<client_id>&quot; BusinessUnit=&quot;<client_id>&quot; Warehouse=&quot;DVN&quot; DocumentName=&quot;SoResultV2_<client_id>_6125_20190812_120854601.xml&quot; xmlns=&quot;http://schemas.quietlogistics.com/V2/EventMessage.xsd&quot;&gt;&#xD;
+          &lt;Extension /&gt;&#xD;
+        &lt;/EventMessage&gt;</Body></Message></ReceiveMessageResult><ResponseMetadata><RequestId>d4c66627-ae28-50e8-8839-33e8d257353f</RequestId></ResponseMetadata></ReceiveMessageResponse>
+    http_version: 
+  recorded_at: Thu, 15 Aug 2019 15:29:03 GMT
+- request:
+    method: post
+    uri: https://sqs.<amazon_region>.amazonaws.com/630008457067/test_mackweldon_from_quiet
+    body:
+      encoding: UTF-8
+      string: Action=ReceiveMessage&MaxNumberOfMessages=10&QueueUrl=https%3A%2F%2Fsqs.<amazon_region>.amazonaws.com%2F630008457067%2Ftest_mackweldon_from_quiet&Version=2012-11-05
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=utf-8
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.30.0 ruby/2.3.3 x86_64-linux aws-sdk-sqs/1.7.0
+      Host:
+      - sqs.<amazon_region>.amazonaws.com
+      X-Amz-Date:
+      - 20190815T152903Z
+      X-Amz-Content-Sha256:
+      - e427658d6defb55f4327147fbd175571ca71f8eae322503a567cb602bd9930dc
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=<amazone_access_key>/20190815/<amazon_region>/sqs/aws4_request,
+        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date, Signature=8b23e6bdcdebffb3377bf1c21d9dc5daf08c77a198e7f458de68c807a389efe0
+      Content-Length:
+      - '158'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amzn-Requestid:
+      - 1964201e-7e97-5e9b-a1d7-75d102e8040d
+      Date:
+      - Thu, 15 Aug 2019 15:29:03 GMT
+      Content-Type:
+      - text/xml
+      Content-Length:
+      - '2766'
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version="1.0"?><ReceiveMessageResponse xmlns="http://queue.amazonaws.com/doc/2012-11-05/"><ReceiveMessageResult><Message><MessageId>b365af76-3646-41be-983f-acd2b5da1e63</MessageId><ReceiptHandle>AQEB2zX5gh0T1fTwBIwJtJ8ccJwY5LdR74ggGTS3t7U9vODRpH8XR1Sf9/alJq2vDmWSdFNhgvX/DclYeIEG7sU40fcBjbA97EpNQ3MTv5GlMpMhivH++mU2kr4sOpssUraA+bhuiBhoOcwfbn8Bl7uz783odfuG0X94U+JYa4F+pd3Jyk99/6G6mrV7CQIAZ/UkbcgSZ9+rmq5HJEyRUUBWzluJqiow5D68bwiJ/rD01mL3Q0q6wuNakcZJShocQGbfQQqFV+E/J11Q4bq7Mp6/h2gyKAqVfHk8vXWe8PYr/cKHAYTh0AaZtPvKzxa+6piIT8+EIezEwmUtS1iyvQlB4+3BlKOMUbPDp4TLiJuDStr9rqlWyBj9Vtu08SMs0VN0gBOuPhz7BSxhSkq2kLrZZA==</ReceiptHandle><MD5OfBody>23690c0d3b20dbd8a47e52a06c879579</MD5OfBody><Body>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&#xD;
+        &lt;EventMessage xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; MessageId=&quot;62a2bb6b-37db-43ba-b971-a010505e0592&quot; MessageDate=&quot;2019-08-12T16:11:46.2708199Z&quot; DocumentType=&quot;ShipmentOrderResult&quot; ClientId=&quot;<client_id>&quot; BusinessUnit=&quot;<client_id>&quot; Warehouse=&quot;DVN&quot; DocumentName=&quot;SoResultV2_<client_id>_192153_20190812_121125472.xml&quot; xmlns=&quot;http://schemas.quietlogistics.com/V2/EventMessage.xsd&quot;&gt;&#xD;
+          &lt;Extension /&gt;&#xD;
+        &lt;/EventMessage&gt;</Body></Message><Message><MessageId>1a7f5dd9-a25a-43f0-9643-6e0697e3f455</MessageId><ReceiptHandle>AQEBZdznejTqd4ZtZF7NjqO6xjye5GvVHElkFjJMsuGOXwR9EvC7psof4H85tZj13LhJaBjTNRwTZoD9bKumWYwyFgiBF/l0J26DFmuUIkGRoozhnDtmiZYzOcX0KQgabQwQvmXILF1AQ12BgCIfcvgLUWtYdkBJ56cRm2H1dXbeEGXZsg+KZquwP1ulgf5rxvrzfoFCIUn70cHvI+o0ssyAqlZhK6zP76s5bW0vkTDArA05HOSd99VhWGHltetezsIB38n8LuTnXP3imnhi66KuGMLM6WXnASTcgpgY7NFkVPMic/bEAkT5lCwdh0AfREskrVBeMV8IIfEc79FiVALzg8cb9murXwjw4yqiDW/sqpiJv0M30NlgBLjXaGRA7UkKWO3J6qGbp3FtJKYBBwSatQ==</ReceiptHandle><MD5OfBody>f31dfa6bd055ab3d1289099bc87076c7</MD5OfBody><Body>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&#xD;
+        &lt;EventMessage xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; MessageId=&quot;131ac224-4ee4-44dd-ae28-5bd25ccdf49e&quot; MessageDate=&quot;2019-08-12T16:12:47.6810064Z&quot; DocumentType=&quot;ShipmentOrderResult&quot; ClientId=&quot;<client_id>&quot; BusinessUnit=&quot;<client_id>&quot; Warehouse=&quot;DVN&quot; DocumentName=&quot;SoResultV2_<client_id>_192160_20190812_121234765.xml&quot; xmlns=&quot;http://schemas.quietlogistics.com/V2/EventMessage.xsd&quot;&gt;&#xD;
+          &lt;Extension /&gt;&#xD;
+        &lt;/EventMessage&gt;</Body></Message></ReceiveMessageResult><ResponseMetadata><RequestId>1964201e-7e97-5e9b-a1d7-75d102e8040d</RequestId></ResponseMetadata></ReceiveMessageResponse>
+    http_version: 
+  recorded_at: Thu, 15 Aug 2019 15:29:03 GMT
+recorded_with: VCR 5.0.0
