@@ -1,4 +1,3 @@
-
 require_relative 'spec_helper'
 require 'pp'
 
@@ -110,76 +109,247 @@ describe 'App' do
 
   end
 
-  describe "get_shipments delete messages", vcr: true do
-    it "returns 200 and shipments object" do
-      post '/get_messages', {
-        "parameters": {
-          "client_id": client_id,
-          "amazon_region": amazon_region,
-          "business_unit": business_unit,
-          "amazon_access_key": amazon_access_key,
-          "amazon_secret_key": amazon_secret_key,
-          "ql_incoming_queue": ql_incoming_queue,
-          "ql_outgoing_queue": ql_outgoing_queue,
-          "ql_incoming_bucket": ql_incoming_bucket,
-          "ql_outgoing_bucket": ql_outgoing_bucket
-        },
-        "request_id": "5b8c6c82-090d-46d1-8a4a-3cc14e33485e"
-      }.to_json, headers
+  context "different delete message scenarios using get_shipments", vcr: true do
 
-      response = JSON.parse(last_response.body)
-      expect(last_response.status).to eq 200
-      expect(response["summary"]).to be_instance_of(String)
-      expect(response["messages"].count).to eq 7
+    describe "get_shipments does not delete messages with delete_message set to 0" do
+      it "returns 200 shipment object" do
+        post '/get_messages', {
+          "parameters": {
+            "client_id": client_id,
+            "amazon_region": amazon_region,
+            "business_unit": business_unit,
+            "amazon_access_key": amazon_access_key,
+            "amazon_secret_key": amazon_secret_key,
+            "ql_incoming_queue": ql_incoming_queue,
+            "ql_outgoing_queue": ql_outgoing_queue,
+            "ql_incoming_bucket": ql_incoming_bucket,
+            "ql_outgoing_bucket": ql_outgoing_bucket
+          },
+          "request_id": "5b8c6c82-090d-46d1-8a4a-3cc14e33485e"
+        }.to_json, headers
 
-      first_msg = response["messages"].first
-      expect(first_msg).to have_key("document_type")
-      expect(first_msg).to have_key("receipt_handle")
-      expect(first_msg).to have_key("id")
-      expect(first_msg).to have_key("message_date")
-      expect(first_msg["document_type"]).to eq 'ShipmentOrderResult'
+        response = JSON.parse(last_response.body)
+        expect(last_response.status).to eq 200
+        expect(response["summary"]).to be_instance_of(String)
+        expect(response["messages"].count).to be > 0
 
-      post '/get_shipments', {
-        "parameters": {
-          "client_id": client_id,
-          "amazon_region": amazon_region,
-          "business_unit": business_unit,
-          "amazon_access_key": amazon_access_key,
-          "amazon_secret_key": amazon_secret_key,
-          "ql_incoming_queue": ql_incoming_queue,
-          "ql_outgoing_queue": ql_outgoing_queue,
-          "ql_incoming_bucket": ql_incoming_bucket,
-          "ql_outgoing_bucket": ql_outgoing_bucket
-        },
-        "request_id": "5b8c6c82-090d-46d1-8a4a-3cc14e33485e",
-        message: first_msg
-      }.to_json, headers
+        first_msg = response["messages"].first
+        expect(first_msg).to have_key("document_type")
+        expect(first_msg).to have_key("receipt_handle")
+        expect(first_msg).to have_key("id")
+        expect(first_msg).to have_key("message_date")
+        expect(first_msg["document_type"]).to eq 'ShipmentOrderResult'
 
-      response = JSON.parse(last_response.body)
-      expect(last_response.status).to eq 200
-      expect(response["summary"]).to be_instance_of(String)
-      expect(response).to have_key "shipments"
+        post '/get_shipments', {
+          "parameters": {
+            "client_id": client_id,
+            "amazon_region": amazon_region,
+            "business_unit": business_unit,
+            "amazon_access_key": amazon_access_key,
+            "amazon_secret_key": amazon_secret_key,
+            "ql_incoming_queue": ql_incoming_queue,
+            "ql_outgoing_queue": ql_outgoing_queue,
+            "ql_incoming_bucket": ql_incoming_bucket,
+            "ql_outgoing_bucket": ql_outgoing_bucket,
+            "delete_message": "0"
+          },
+          "request_id": "5b8c6c82-090d-46d1-8a4a-3cc14e33485e",
+          message: first_msg
+        }.to_json, headers
 
-      post '/get_messages', {
-        "parameters": {
-          "client_id": client_id,
-          "amazon_region": amazon_region,
-          "business_unit": business_unit,
-          "amazon_access_key": amazon_access_key,
-          "amazon_secret_key": amazon_secret_key,
-          "ql_incoming_queue": ql_incoming_queue,
-          "ql_outgoing_queue": ql_outgoing_queue,
-          "ql_incoming_bucket": ql_incoming_bucket,
-          "ql_outgoing_bucket": ql_outgoing_bucket
-        },
-        "request_id": "5b8c6c82-090d-46d1-8a4a-3cc14e33485e"
-      }.to_json, headers
+        response = JSON.parse(last_response.body)
+        expect(last_response.status).to eq 200
+        expect(response["summary"]).to be_instance_of(String)
+        expect(response).to have_key "shipments"
 
-      response = JSON.parse(last_response.body)
-      pp response
-      expect(last_response.status).to eq 200
-      expect(response["summary"]).to be_instance_of(String)
-      expect(response["messages"].count).to eq 6
+        # Default visibility timeout in sqs is 30 seconds
+        # If recording new vcr cassettes, uncomment to make sure get_messages gets all messages
+
+        # sleep 30
+
+        post '/get_messages', {
+          "parameters": {
+            "client_id": client_id,
+            "amazon_region": amazon_region,
+            "business_unit": business_unit,
+            "amazon_access_key": amazon_access_key,
+            "amazon_secret_key": amazon_secret_key,
+            "ql_incoming_queue": ql_incoming_queue,
+            "ql_outgoing_queue": ql_outgoing_queue,
+            "ql_incoming_bucket": ql_incoming_bucket,
+            "ql_outgoing_bucket": ql_outgoing_bucket
+          },
+          "request_id": "5b8c6c82-090d-46d1-8a4a-3cc14e33485e"
+        }.to_json, headers
+
+        response = JSON.parse(last_response.body)
+        expect(last_response.status).to eq 200
+        expect(response["summary"]).to be_instance_of(String)
+        ids = response["messages"].map { |message| message["id"] }
+        expect(ids.include?(first_msg["id"])).to eq true
+
+      end
+    end
+
+
+    describe "get_shipments does not delete messages with delete_message set to 0 integer" do
+      it "returns 200 shipment object" do
+        post '/get_messages', {
+          "parameters": {
+            "client_id": client_id,
+            "amazon_region": amazon_region,
+            "business_unit": business_unit,
+            "amazon_access_key": amazon_access_key,
+            "amazon_secret_key": amazon_secret_key,
+            "ql_incoming_queue": ql_incoming_queue,
+            "ql_outgoing_queue": ql_outgoing_queue,
+            "ql_incoming_bucket": ql_incoming_bucket,
+            "ql_outgoing_bucket": ql_outgoing_bucket
+          },
+          "request_id": "5b8c6c82-090d-46d1-8a4a-3cc14e33485e"
+        }.to_json, headers
+
+        response = JSON.parse(last_response.body)
+        expect(last_response.status).to eq 200
+        expect(response["summary"]).to be_instance_of(String)
+        expect(response["messages"].count).to be > 0
+
+        first_msg = response["messages"].first
+        expect(first_msg).to have_key("document_type")
+        expect(first_msg).to have_key("receipt_handle")
+        expect(first_msg).to have_key("id")
+        expect(first_msg).to have_key("message_date")
+        expect(first_msg["document_type"]).to eq 'ShipmentOrderResult'
+
+        post '/get_shipments', {
+          "parameters": {
+            "client_id": client_id,
+            "amazon_region": amazon_region,
+            "business_unit": business_unit,
+            "amazon_access_key": amazon_access_key,
+            "amazon_secret_key": amazon_secret_key,
+            "ql_incoming_queue": ql_incoming_queue,
+            "ql_outgoing_queue": ql_outgoing_queue,
+            "ql_incoming_bucket": ql_incoming_bucket,
+            "ql_outgoing_bucket": ql_outgoing_bucket,
+            "delete_message": 0
+          },
+          "request_id": "5b8c6c82-090d-46d1-8a4a-3cc14e33485e",
+          message: first_msg
+        }.to_json, headers
+
+        response = JSON.parse(last_response.body)
+        expect(last_response.status).to eq 200
+        expect(response["summary"]).to be_instance_of(String)
+        expect(response).to have_key "shipments"
+
+
+        # Default visibility timeout in sqs is 30 seconds
+        # If recording new vcr cassettes, uncomment to make sure get_messages gets all messages
+
+        # sleep 30
+
+        post '/get_messages', {
+          "parameters": {
+            "client_id": client_id,
+            "amazon_region": amazon_region,
+            "business_unit": business_unit,
+            "amazon_access_key": amazon_access_key,
+            "amazon_secret_key": amazon_secret_key,
+            "ql_incoming_queue": ql_incoming_queue,
+            "ql_outgoing_queue": ql_outgoing_queue,
+            "ql_incoming_bucket": ql_incoming_bucket,
+            "ql_outgoing_bucket": ql_outgoing_bucket
+          },
+          "request_id": "5b8c6c82-090d-46d1-8a4a-3cc14e33485e"
+        }.to_json, headers
+
+        response = JSON.parse(last_response.body)
+        expect(last_response.status).to eq 200
+        expect(response["summary"]).to be_instance_of(String)
+        ids = response["messages"].map { |message| message["id"] }
+        expect(ids.include?(first_msg["id"])).to eq true
+
+      end
+    end
+
+    describe "get_shipments delete messages by default" do
+      it "returns 200 and shipments object" do
+        post '/get_messages', {
+          "parameters": {
+            "client_id": client_id,
+            "amazon_region": amazon_region,
+            "business_unit": business_unit,
+            "amazon_access_key": amazon_access_key,
+            "amazon_secret_key": amazon_secret_key,
+            "ql_incoming_queue": ql_incoming_queue,
+            "ql_outgoing_queue": ql_outgoing_queue,
+            "ql_incoming_bucket": ql_incoming_bucket,
+            "ql_outgoing_bucket": ql_outgoing_bucket
+          },
+          "request_id": "5b8c6c82-090d-46d1-8a4a-3cc14e33485e"
+        }.to_json, headers
+
+        response = JSON.parse(last_response.body)
+        expect(last_response.status).to eq 200
+        expect(response["summary"]).to be_instance_of(String)
+        expect(response["messages"].count).to be > 0
+
+        first_msg = response["messages"].first
+        expect(first_msg).to have_key("document_type")
+        expect(first_msg).to have_key("receipt_handle")
+        expect(first_msg).to have_key("id")
+        expect(first_msg).to have_key("message_date")
+        expect(first_msg["document_type"]).to eq 'ShipmentOrderResult'
+
+        post '/get_shipments', {
+          "parameters": {
+            "client_id": client_id,
+            "amazon_region": amazon_region,
+            "business_unit": business_unit,
+            "amazon_access_key": amazon_access_key,
+            "amazon_secret_key": amazon_secret_key,
+            "ql_incoming_queue": ql_incoming_queue,
+            "ql_outgoing_queue": ql_outgoing_queue,
+            "ql_incoming_bucket": ql_incoming_bucket,
+            "ql_outgoing_bucket": ql_outgoing_bucket
+          },
+          "request_id": "5b8c6c82-090d-46d1-8a4a-3cc14e33485e",
+          message: first_msg
+        }.to_json, headers
+
+        response = JSON.parse(last_response.body)
+        expect(last_response.status).to eq 200
+        expect(response["summary"]).to be_instance_of(String)
+        expect(response).to have_key "shipments"
+
+        # Default visibility timeout in sqs is 30 seconds
+        # If recording new vcr cassettes, uncomment to make sure get_messages gets all messages
+
+        # sleep 30
+
+        post '/get_messages', {
+          "parameters": {
+            "client_id": client_id,
+            "amazon_region": amazon_region,
+            "business_unit": business_unit,
+            "amazon_access_key": amazon_access_key,
+            "amazon_secret_key": amazon_secret_key,
+            "ql_incoming_queue": ql_incoming_queue,
+            "ql_outgoing_queue": ql_outgoing_queue,
+            "ql_incoming_bucket": ql_incoming_bucket,
+            "ql_outgoing_bucket": ql_outgoing_bucket
+          },
+          "request_id": "5b8c6c82-090d-46d1-8a4a-3cc14e33485e"
+        }.to_json, headers
+
+        response = JSON.parse(last_response.body)
+        expect(last_response.status).to eq 200
+        expect(response["summary"]).to be_instance_of(String)
+        ids = response["messages"].map { |message| message["id"] }
+        expect(ids.include?(first_msg["id"])).to eq false
+
+      end
 
     end
 
