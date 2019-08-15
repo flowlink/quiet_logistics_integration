@@ -204,7 +204,7 @@ class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
 
       code = 200
     rescue => e
-      message  = e.backtrace
+      message  = e.message
       code     = 500
     end
 
