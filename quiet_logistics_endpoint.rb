@@ -14,7 +14,12 @@ class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
 
   set :logging, true
 
-  before do
+  set(:method) do |method|
+    method = method.to_s.upcase
+    condition { request.request_method == method }
+  end
+
+  before :method => :post do
     Aws.config.update({
       region: @config['amazon_region'],
       credentials: Aws::Credentials.new(
