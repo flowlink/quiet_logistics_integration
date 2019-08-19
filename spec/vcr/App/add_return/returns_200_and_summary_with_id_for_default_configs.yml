@@ -1,0 +1,108 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://<ql_outgoing_bucket>.s3.amazonaws.com/RMA_RA000000317_20190822_2055089.xml
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0"?>
+        <RMADocument xmlns="http://schemas.quietlogistics.com/V2/RMADocument.xsd">
+          <RMA ClientID="<client_id>" BusinessUnit="<client_id>" RMANumber="RA000000317" TrackingNumber="9202090198397801271468">
+            <Line LineNo="1" OrderNumber="428952" ItemNumber="M02B04-FS-M" Quantity="1" SaleUOM="EA" ReturnReason="general"/>
+          </RMA>
+        </RMADocument>
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.30.0 ruby/2.3.3 x86_64-linux aws-sdk-s3/1.21.0
+      Expect:
+      - 100-continue
+      Content-Md5:
+      - UnlzriNHCQ2wCTC8y8zIpg==
+      Host:
+      - "<ql_outgoing_bucket>.s3.amazonaws.com"
+      X-Amz-Date:
+      - 20190822T205551Z
+      X-Amz-Content-Sha256:
+      - fe46d5a2e957ad114e8bc3c9d850001baea53142a0e6526636ce03474fbdf264
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=<amazone_access_key>/20190822/<amazon_region>/s3/aws4_request,
+        SignedHeaders=content-md5;expect;host;user-agent;x-amz-content-sha256;x-amz-date,
+        Signature=13ac71ccc607538a32abbacae1cc3c772ae90100e21e8df1aa2393fd06bb14c6
+      Content-Length:
+      - '359'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amz-Id-2:
+      - KOBtx5as4oPvIOKMPdlJRlqtjhqBtWGJkzDwD8izXQfP5RtPt47xbEhhKefgauWONGT8sGTY4xo=
+      X-Amz-Request-Id:
+      - F734CA9AF2E2D454
+      Date:
+      - Thu, 22 Aug 2019 20:55:52 GMT
+      X-Amz-Expiration:
+      - expiry-date="Fri, 06 Sep 2019 00:00:00 GMT", rule-id="NmE1OWI5OGQtNzQ0MC00NWM1LWI0MjAtNjQwMTM5ZmE4NzYy"
+      Etag:
+      - '"527973ae2347090db00930bccbccc8a6"'
+      Content-Length:
+      - '0'
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Thu, 22 Aug 2019 20:55:51 GMT
+- request:
+    method: post
+    uri: https://sqs.<amazon_region>.amazonaws.com/630008457067/test_mackweldon_to_quiet
+    body:
+      encoding: UTF-8
+      string: Action=SendMessage&MessageBody=%3C%3Fxml%20version%3D%221.0%22%3F%3E%0A%3CEventMessage%20xmlns%3D%22http%3A%2F%2Fschemas.quietlogistics.com%2FV2%2FEventMessage.xsd%22%20ClientId%3D%22<client_id>%22%20BusinessUnit%3D%22<client_id>%22%20DocumentName%3D%22RMA_RA000000317_20190822_2055089.xml%22%20DocumentType%3D%22RMADocument%22%20MessageId%3D%22628b248f-a008-4501-8da8-5cd67db05bed%22%20Warehouse%3D%22DVN%22%20MessageDate%3D%222019-08-22T20%3A55%3A51Z%22%2F%3E%0A&QueueUrl=https%3A%2F%2Fsqs.<amazon_region>.amazonaws.com%2F630008457067%2Ftest_mackweldon_to_quiet&Version=2012-11-05
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=utf-8
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.30.0 ruby/2.3.3 x86_64-linux aws-sdk-sqs/1.7.0
+      Host:
+      - sqs.<amazon_region>.amazonaws.com
+      X-Amz-Date:
+      - 20190822T205551Z
+      X-Amz-Content-Sha256:
+      - 3dd9fe5db5cd1d809cbaf9e5edc33009098a90b2acae3e068aebcdd13cb4947a
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=<amazone_access_key>/20190822/<amazon_region>/sqs/aws4_request,
+        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date, Signature=65c28aa776303bd20f468be8a71f534ddb95dac870d851ea6bd0f6a0cfbe96a9
+      Content-Length:
+      - '574'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amzn-Requestid:
+      - e2866a69-d128-5f7f-bb4b-3fb0d2b0cbc4
+      Date:
+      - Thu, 22 Aug 2019 20:55:52 GMT
+      Content-Type:
+      - text/xml
+      Content-Length:
+      - '378'
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0"?><SendMessageResponse xmlns="http://queue.amazonaws.com/doc/2012-11-05/"><SendMessageResult><MessageId>baff2271-1d75-4528-9ce8-89c1e5bcae79</MessageId><MD5OfMessageBody>48add640fd3636669f7466d7b32c2293</MD5OfMessageBody></SendMessageResult><ResponseMetadata><RequestId>e2866a69-d128-5f7f-bb4b-3fb0d2b0cbc4</RequestId></ResponseMetadata></SendMessageResponse>
+    http_version: 
+  recorded_at: Thu, 22 Aug 2019 20:55:52 GMT
+recorded_with: VCR 5.0.0

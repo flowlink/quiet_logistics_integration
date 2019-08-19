@@ -6,14 +6,16 @@ module Documents
       @rma    = rma
       @config = config
       @unit   = config['business_unit']
-      @number = rma['id']
-      @name   = "RMA_#{@number}_#{date_stamp}.xml"
+      @number = rma['order_number']
+      @rma_number = rma['rma_number']
+      @name   = "RMA_#{@rma_number}_#{date_stamp}.xml"
+      @tracking_number = rma['tracking_number']
     end
 
     def to_xml
       builder = Nokogiri::XML::Builder.new do |xml|
         xml.RMADocument("xmlns" => "http://schemas.quietlogistics.com/V2/RMADocument.xsd") {
-          xml.RMA('ClientID' => @config['client_id'], 'BusinessUnit' => @unit, 'RMANumber' => @number) {
+          xml.RMA('ClientID' => @config['client_id'], 'BusinessUnit' => @unit, 'RMANumber' => @rma_number, 'TrackingNumber' => @tracking_number) {
 
             @rma['line_items'].collect.with_index { |item, i| xml.Line(line_hash item, i) }
           }
