@@ -47,7 +47,13 @@ module Documents
         business_unit: @doc.xpath('//@BusinessUnit').first.value,
         shipped_at: @doc.xpath('//@DateShipped').first.text,
         tracking_company: @doc.xpath('//@Carrier').first.text,
-        line_items: line_items_to_h
+        line_items: line_items_to_h,
+        order: { order_number: @doc.xpath('//@OrderNumber').first.text },
+        relationships: [
+          {
+            object: 'order', key: 'order_number'
+          }
+        ]
       }
     end
 
