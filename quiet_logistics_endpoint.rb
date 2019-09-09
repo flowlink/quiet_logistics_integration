@@ -310,7 +310,7 @@ class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
       end
 
       unless @config['delete_message'] == '0' || @config['delete_message'] == 0
-        MessageDeleter.new(@config, @payload).delete_message(config, payload) if msg['receipt_handle']
+        MessageDeleter.new(@config, @payload).delete_message if msg['receipt_handle']
       end
 
       code = 200
