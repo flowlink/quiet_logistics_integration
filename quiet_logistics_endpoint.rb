@@ -45,8 +45,7 @@ class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
       message  = "Received #{message_count} message(s)"
       code     = 200
     rescue => e
-      puts "Error in #{@config['business_unit']}"
-      puts e.backtrace
+      log_if_dev(e)
       message  = e.message
       code     = 500
     end
@@ -69,8 +68,7 @@ class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
 
       code = 200
     rescue => e
-      puts "Error in #{@config['business_unit']}"
-      puts e.backtrace
+      log_if_dev(e)
       message  = e.message
       code     = 500
     end
@@ -96,8 +94,7 @@ class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
 
       code     = 200
     rescue => e
-      puts "Error in #{@config['business_unit']}"
-      puts e.backtrace
+      log_if_dev(e)
       message = e.message
       code    = 500
     end
@@ -111,8 +108,7 @@ class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
       message = Api.send_document('PurchaseOrder', order, outgoing_bucket, outgoing_queue, @config)
       code    = 200
     rescue => e
-      puts "Error in #{@config['business_unit']}"
-      puts e.backtrace
+      log_if_dev(e)
       message = e.message
       code    = 500
     end
@@ -126,8 +122,7 @@ class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
       message = Api.send_document('ShipmentOrderCancel', order, outgoing_bucket, outgoing_queue, @config)
       code    = 200
     rescue => e
-      puts "Error in #{@config['business_unit']}"
-      puts e.backtrace
+      log_if_dev(e)
       message = e.message
       code    = 500
     end
@@ -141,8 +136,7 @@ class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
       message = Api.send_document('InventorySummaryRequest', inventory, outgoing_bucket, outgoing_queue, @config)
       code    = 200
     rescue => e
-      puts "Error in #{@config['business_unit']}"
-      puts e.backtrace
+      log_if_dev(e)
       message = e.message
       code    = 500
     end
@@ -156,8 +150,7 @@ class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
       message = Api.send_document('ItemProfile', item, outgoing_bucket, outgoing_queue, @config)
       code    = 200
     rescue => e
-      puts "Error in #{@config['business_unit']}"
-      puts e.backtrace
+      log_if_dev(e)
       message = e.message
       code    = 500
     end
@@ -171,8 +164,7 @@ class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
       message  = Api.send_document('RMADocument', shipment, outgoing_bucket, outgoing_queue, @config)
       code     = 200
     rescue => e
-      puts "Error in #{@config['business_unit']}"
-      puts e.backtrace
+      log_if_dev(e)
       message  = e.message
       code     = 500
     end
@@ -198,8 +190,7 @@ class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
 
       code = 200
     rescue => e
-      puts "Error in #{@config['business_unit']}"
-      puts e.backtrace
+      log_if_dev(e)
       message  = e.message
       code     = 500
     end
@@ -227,8 +218,7 @@ class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
 
       code = 200
     rescue => e
-      puts "Error in #{@config['business_unit']}"
-      puts e.backtrace
+      log_if_dev(e)
       message  = e.message
       code     = 500
     end
@@ -254,8 +244,7 @@ class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
 
       code = 200
     rescue => e
-      puts "Error in #{@config['business_unit']}"
-      puts e.backtrace
+      log_if_dev(e)
       message  = e.message
       code     = 500
     end
@@ -288,8 +277,7 @@ class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
 
       add_parameter 'receipt_handles_to_delete', receipt_handles.to_json
     rescue => e
-      puts "Error in #{@config['business_unit']}"
-      puts e.backtrace
+      log_if_dev(e)
       message  = e.message
       code     = 500
     end
@@ -315,8 +303,7 @@ class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
 
       code = 200
     rescue => e
-      puts "Error in #{@config['business_unit']}"
-      puts e.backtrace
+      log_if_dev(e)
       message  = e.message
       code     = 500
     end
@@ -343,5 +330,11 @@ class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
     receipt_handles_to_delete.empty? ||
     @config['delete_message'] == '0' ||
     @config['delete_message'] == 0
+  end
+
+  def log_if_dev(e)
+    return unless ENV['RAILS_ENV'] = "development"
+    puts "Error in #{@config['business_unit']}"
+    puts e.backtrace
   end
 end
