@@ -45,6 +45,8 @@ class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
       message  = "Received #{message_count} message(s)"
       code     = 200
     rescue => e
+      puts "Error in #{@config['business_unit']}"
+      puts e.backtrace
       message  = e.message
       code     = 500
     end
@@ -67,6 +69,8 @@ class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
 
       code = 200
     rescue => e
+      puts "Error in #{@config['business_unit']}"
+      puts e.backtrace
       message  = e.message
       code     = 500
     end
@@ -92,6 +96,8 @@ class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
 
       code     = 200
     rescue => e
+      puts "Error in #{@config['business_unit']}"
+      puts e.backtrace
       message = e.message
       code    = 500
     end
@@ -105,6 +111,8 @@ class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
       message = Api.send_document('PurchaseOrder', order, outgoing_bucket, outgoing_queue, @config)
       code    = 200
     rescue => e
+      puts "Error in #{@config['business_unit']}"
+      puts e.backtrace
       message = e.message
       code    = 500
     end
@@ -118,6 +126,8 @@ class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
       message = Api.send_document('ShipmentOrderCancel', order, outgoing_bucket, outgoing_queue, @config)
       code    = 200
     rescue => e
+      puts "Error in #{@config['business_unit']}"
+      puts e.backtrace
       message = e.message
       code    = 500
     end
@@ -131,6 +141,8 @@ class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
       message = Api.send_document('InventorySummaryRequest', inventory, outgoing_bucket, outgoing_queue, @config)
       code    = 200
     rescue => e
+      puts "Error in #{@config['business_unit']}"
+      puts e.backtrace
       message = e.message
       code    = 500
     end
@@ -144,6 +156,8 @@ class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
       message = Api.send_document('ItemProfile', item, outgoing_bucket, outgoing_queue, @config)
       code    = 200
     rescue => e
+      puts "Error in #{@config['business_unit']}"
+      puts e.backtrace
       message = e.message
       code    = 500
     end
@@ -157,6 +171,8 @@ class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
       message  = Api.send_document('RMADocument', shipment, outgoing_bucket, outgoing_queue, @config)
       code     = 200
     rescue => e
+      puts "Error in #{@config['business_unit']}"
+      puts e.backtrace
       message  = e.message
       code     = 500
     end
@@ -182,6 +198,8 @@ class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
 
       code = 200
     rescue => e
+      puts "Error in #{@config['business_unit']}"
+      puts e.backtrace
       message  = e.message
       code     = 500
     end
@@ -209,6 +227,8 @@ class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
 
       code = 200
     rescue => e
+      puts "Error in #{@config['business_unit']}"
+      puts e.backtrace
       message  = e.message
       code     = 500
     end
@@ -234,6 +254,8 @@ class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
 
       code = 200
     rescue => e
+      puts "Error in #{@config['business_unit']}"
+      puts e.backtrace
       message  = e.message
       code     = 500
     end
@@ -243,14 +265,31 @@ class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
 
   post '/get_errors' do
     begin
-      queue = @config['ql_incoming_queue']
+      receipt_handles = []
+      message = ""
+      code = 206
 
-      receiver = Receiver.new(queue, @config['ql_message_iterations'])
-      receiver.receive_errors { |msg| add_object :error_message, msg }
+      unless delete_error_messages?
+        receipt_handles_to_delete.each do |handle|
+          error_payload = {'message' => { 'receipt_handle' => handle.strip} }
+          MessageDeleter.new(@config, error_payload).delete_message
+        end
+      else
+        queue = @config['ql_incoming_queue']
+        receiver = Receiver.new(queue, @config['ql_message_iterations'])
+        receiver.receive_errors do |msg|
+          receipt_handles << msg[:receipt_handle]
+          add_object :error_message, msg
+        end
 
-      message  = "Received #{receiver.count} error messages"
-      code     = 200
+        message = "Received #{receiver.count} error messages"
+        code = 200
+      end
+
+      add_parameter 'receipt_handles_to_delete', receipt_handles.to_json
     rescue => e
+      puts "Error in #{@config['business_unit']}"
+      puts e.backtrace
       message  = e.message
       code     = 500
     end
@@ -276,6 +315,8 @@ class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
 
       code = 200
     rescue => e
+      puts "Error in #{@config['business_unit']}"
+      puts e.backtrace
       message  = e.message
       code     = 500
     end
@@ -289,5 +330,18 @@ class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
 
   def outgoing_bucket
     @config['ql_outgoing_bucket']
+  end
+
+  def receipt_handles_to_delete
+    # Adds this check here for backwards compatibility in case someone forgets
+    # to add this param in an existing workflow in FlowLink
+    handles = @config['receipt_handles_to_delete'] || "[]"
+    @receipt_handles_to_delete ||= JSON.parse(handles)
+  end
+
+  def delete_error_messages?
+    receipt_handles_to_delete.empty? ||
+    @config['delete_message'] == '0' ||
+    @config['delete_message'] == 0
   end
 end
