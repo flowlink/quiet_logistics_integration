@@ -334,7 +334,6 @@ class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
 
   def log_if_dev(e)
     return unless ENV['RAILS_ENV'] = "development"
-    puts "Error in #{@config['business_unit']}"
     puts e.backtrace
   end
 end
