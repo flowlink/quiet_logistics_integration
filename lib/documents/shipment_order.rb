@@ -7,6 +7,7 @@ module Documents
       @shipment        = shipment
       @shipment_number = shipment['id']
       @name            = "#{@config['business_unit']}_ShipmentOrder_#{@shipment_number}_#{date_stamp}.xml"
+      validate_address if @config['ql_validate_address']
     end
 
     def to_xml
@@ -123,5 +124,49 @@ module Documents
 
       full_name
     end
+
+    private
+
+    def validate_address
+      billing = @shipment['billing_address']
+      shipping = @shipment['shipping_address']
+
+      raise MissingZipcode, @shipment['id'] if shipping['zipcode'].empty? || billing['zipcode'].empty?
+      raise NonAsciiDetected, @shipment['id'] if has_non_ascii?(shipping) || has_non_ascii?(billing)
+
+    end
+
+    def has_non_ascii?(address)
+        check_regex(address['address1']) || check_regex(address['address2']) ||
+          check_regex(address['city']) || check_regex(address['state']) ||
+          check_regex(address['zipcode']) || check_regex(address['country'])
+    end
+
+    def check_regex(field)
+      field.match /[^\u0000-\u007F]+/
+    end
+
+    class MissingZipcode < StandardError
+      def initialize(order_number)
+        @order_number = order_number
+        super
+      end
+
+      def message
+        "Missing zipcode for order: #{@order_number}"
+      end
+    end
+
+    class NonAsciiDetected < StandardError
+      def initialize(order_number)
+        @order_number = order_number
+        super
+      end
+
+      def message
+        "Detected non latin characters for order: #{@order_number}"
+      end
+    end
+
   end
 end
