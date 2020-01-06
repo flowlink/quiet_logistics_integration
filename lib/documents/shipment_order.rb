@@ -143,6 +143,7 @@ module Documents
     end
 
     def check_regex(field)
+      return nil if field.nil?
       field.match /[^\u0000-\u007F]+/
     end
 
