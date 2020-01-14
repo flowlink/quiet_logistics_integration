@@ -1,3 +1,5 @@
+require "i18n"
+
 module Documents
   class ShipmentOrder
     attr_reader :shipment_number, :order, :shipment, :name, :unit
@@ -144,7 +146,7 @@ module Documents
 
     def check_regex(field)
       return nil if field.nil?
-      field.match /[^\u0000-\u007F]+/
+      I18n.transliterate(field).match(/\?/)
     end
 
     class MissingZipcode < StandardError
