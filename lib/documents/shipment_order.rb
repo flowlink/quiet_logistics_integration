@@ -146,7 +146,8 @@ module Documents
 
     def check_regex(field)
       return nil if field.nil?
-      I18n.transliterate(field).match(/\?/)
+      transliterated_field = I18n.transliterate(field)
+      transliterated_field.scan(/\?/).count > 2 ? true : false
     end
 
     class MissingZipcode < StandardError
