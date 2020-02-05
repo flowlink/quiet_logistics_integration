@@ -134,7 +134,7 @@ module Documents
       shipping = @shipment['shipping_address']
 
       raise MissingZipcode, @shipment['id'] if shipping['zipcode'].empty? || billing['zipcode'].empty?
-      raise NonAsciiDetected, @shipment['id'] if has_non_ascii?(shipping) || has_non_ascii?(billing)
+      raise NonAsciiDetected, @shipment['id'] if has_non_ascii?(shipping)
 
     end
 
