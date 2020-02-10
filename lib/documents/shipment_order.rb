@@ -134,7 +134,7 @@ module Documents
       shipping = @shipment['shipping_address']
 
       raise MissingZipcode, @shipment['id'] if shipping['zipcode'].empty? || billing['zipcode'].empty?
-      raise NonAsciiDetected, @shipment['id'] if has_non_ascii?(shipping) || has_non_ascii?(billing)
+      raise NonAsciiDetected, @shipment['id'] if has_non_ascii?(shipping)
 
     end
 
@@ -146,7 +146,8 @@ module Documents
 
     def check_regex(field)
       return nil if field.nil?
-      I18n.transliterate(field).match(/\?/)
+      transliterated_field = I18n.transliterate(field)
+      transliterated_field.scan(/\?/).count > 2 ? true : false
     end
 
     class MissingZipcode < StandardError
