@@ -52,7 +52,7 @@ module Documents
 
       result = ShipmentOrderResult.new(xml)
 
-      expect(result.to_h).to eq(
+      expect(result.to_flowlink_hash).to eq(
         :id => "H13088556647",
         :tracking => "1Z1111111111111111",
         :warehouse => "DVN",

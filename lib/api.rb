@@ -15,12 +15,16 @@ class Api
         Documents::RMA.new(content, config)
       when 'ShipmentOrderCancel'
         Documents::ShipmentOrderCancel.new(content, config)
+      when 'InventorySummaryRequest'
+        Documents::InventorySummaryRequest.new(content, config)
       end
 
     uploader = Uploader.new(bucket)
+    puts document.to_xml
+    puts document.name
+
     url = uploader.process(document.name, document.to_xml)
 
-    puts document.to_xml
 
     event_message = EventMessage.new(type, document.name, config)
     sender = Sender.new(queue)

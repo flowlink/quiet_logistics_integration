@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+<script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
+<script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>
+<form class="sample-form" action-xhr="https://www.mettzer.com/register" method="post" target="_top">
+
+  <input type="text" class="form-control" id="fullname" name="fullname" placeholder="Nome" value="" required="" >
+
+
+  <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="" required="">
+  <input type="tel" class="form-control" id="phone" name="phone" placeholder="Celular" value="" maxlength="15" autocomplete="off">
+  <input type="password" class="form-control" id="password" name="password" placeholder="Senha" value="" required="">
+  <label class="label-new label-sign-up" for="acceptedTermsAndConditions">
+    <input type="checkbox" id="acceptedTermsAndConditions" name="acceptedTermsAndConditions" value="true">
+    Concordo com os
+    <a href="/termos-de-uso/" >Termos de Uso</a> e as
+    <a href="/privacidade/" >Políticas de Privacidade</a>.
+  </label>
+  <label class="label-new label-sign-up" for="acceptedEmailCommunication">
+    <input type="checkbox" id="acceptedEmailCommunication" name="acceptedEmailCommunication" value="true">
+    Aceito receber comunicações por e-mail.
+  </label>
+  <label class="label-new label-sign-up" for="acceptedWhatsappCommunication">
+    <input type="checkbox" id="acceptedWhatsappCommunication" name="acceptedWhatsappCommunication" value="true">
+    Aceito receber comunicações por WhatsApp.
+  </label>
+          <button type="submit" >Finalizar Cadastro</button>
+        </form>
+
+</body>
+
+</html>

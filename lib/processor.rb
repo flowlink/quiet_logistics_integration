@@ -28,12 +28,18 @@ class Processor
     case type
     when 'ShipmentOrderResult'
       Documents::ShipmentOrderResult.new(data)
+    when 'ShipmentOrderCancelReady'
+      Documents::ShipmentOrderCancelReady.new(data)
     when 'PurchaseOrderReceipt'
       Documents::PurchaseOrderReceipt.new(data)
     when 'RMAResultDocument'
       Documents::RMAResult.new(data)
     when 'InventoryEventMessage'
       Documents::InventoryAdjustment.new(data)
+    when 'InventorySummaryReady'
+      Documents::InventorySummaryReady.new(data)
+    when 'RMAResult'
+      Documents::RMAResult.new(data)
     else
       Struct.new(:type).new(:unknown)
     end
