@@ -16,7 +16,7 @@ module Documents
       order_header = {
         'OrderNumber' => @shipment_number,
         'OrderType'   => @shipment['order_type'],
-        'OrderDate'   => DateTime.now.iso8601,
+        'OrderDate'   => @shipment['order_date'] || DateTime.now.iso8601,
         'Gift'        => @shipment['gift'] ? 'true' : 'false'
       }
 
