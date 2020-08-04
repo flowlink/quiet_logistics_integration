@@ -53,38 +53,22 @@ module Documents
       result = ShipmentOrderResult.new(xml)
 
       expect(result.to_flowlink_hash).to eq(
-        :id => "H13088556647",
-        :tracking => "1Z1111111111111111",
-        :warehouse => "DVN",
-        :status => "shipped",
-        :business_unit => "BONOBOS",
-        :shipped_at => "2015-02-24T15:51:31.0953088Z",
-        :cartons => [
-          {
-            :id => "S11111111",
-            :tracking => "1Z1111111111111111",
-            :line_items => [
-              {
-                :ql_item_number => "1111111",
-                :quantity => 1,
-              },
-              {
-                :ql_item_number => "2222222",
-                :quantity => 1,
-              },
-            ],
-          },
-          {
-            :id => "S22222222",
-            :tracking => "1Z2222222222222222",
-            :line_items => [
-              {
-                :ql_item_number => "3333333",
-                :quantity => 1,
-              },
-            ],
-          },
+        {
+        :id =>"H13088556647",
+        :quietlogistics_id=>"H13088556647",
+        :order_number=>"H13088556647",
+        :tracking_numbers=>["1Z1111111111111111", "1Z2222222222222222"],
+        :shipping_method=>"GROUND", :warehouse=>"DVN", :status=>"shipped",
+        :business_unit=>"BONOBOS", :shipped_at=>"2015-02-24T15:51:31.0953088Z",
+        :tracking_company=>"UPS", 
+        :line_items=>[
+          {:carton_id=>"S11111111", :tracking_number=>"1Z1111111111111111", :product_id=>"1111111", :quantity=>1},
+          {:carton_id=>"S11111111", :tracking_number=>"1Z1111111111111111", :product_id=>"2222222", :quantity=>1},
+          {:carton_id=>"S22222222", :tracking_number=>"1Z2222222222222222", :product_id=>"3333333", :quantity=>1}
         ],
+        :order=>{:order_number=>"H13088556647"},
+        :relationships=>[{:object=>"order", :key=>"order_number"}]
+        }
       )
     end
   end
