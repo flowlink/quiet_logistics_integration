@@ -22,7 +22,7 @@ describe 'App' do
     QuietLogisticsEndpoint
   end
 
-  describe "add_return", vcr: { record: :new_episodes } do
+  xdescribe "add_return", vcr: true do
     it "returns 200 and summary with id for default configs" do
       rma = {
         "id": 317,

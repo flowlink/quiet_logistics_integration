@@ -6,7 +6,7 @@ module Documents
     describe '#to_xml' do
       it 'should convert to rma document' do
         shipment = Factories.shipment
-        doc = RMA.new(shipment, {})
+        doc = RMA.new(shipment.merge({'rma_number' => shipment['id']}), {})
         xml = Nokogiri::XML(doc.to_xml)
         xsd = Nokogiri::XML::Schema(File.read('./spec/schemas/rma.xsd'))
 
