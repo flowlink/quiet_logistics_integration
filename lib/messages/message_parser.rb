@@ -23,13 +23,16 @@ module Messages
     end
     
     def self.is_regexp_match?(msg, config)
+      document_type = msg['document_type'] || msg[:document_type]
+      document_name = msg['document_name'] || msg[:document_name]
+
       return true unless config['regex_items'] && config['regex_items'] != ""
 
-      regex = JSON.parse(config['regex_items']).first[msg[:document_type]]
+      regex = JSON.parse(config['regex_items']).first[document_type]
 
       return false if regex.nil?
 
-      return true if msg[:document_name].match(Regexp.new(regex))
+      return true if document_name.match(Regexp.new(regex))
 
       return false
     end
