@@ -1,0 +1,20 @@
+secrets:
+- kmsKeyName: projects/flowlink-project/locations/global/keyRings/flowlink-cloud-run/cryptoKeys/cloudbuild-key
+  secretEnv:
+    amazon_access_key: CiQAoxalPj/Mn3cos6gLS3bPNjlJA29FO/fEurWxnSLR/8wq6JsSPQA//+iJyNShRManLHlHrKbllnQwU+A2ZekTB48Yjpi9ujFjVV7T3R4eQQJN8SB96KNac7aRLuY+kfLGRDU=
+    amazon_secret_key: CiQAoxalPrqk1bFmVBYxki2j8BtYQa7OLdCZdGc2tZMYMizokQISUQA//+iJepllAC621qMF1/TkXTlo+6OXB5WwHKlxhcQrK4ORai8Z2KOdxix4yg0XeBRsHvQsDhpVEeD2PYGqs7PaKLr4zVj27oY8XyraxB0vjw==
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/flowlink-project/github.com/flowlink/quiet_logistics_integration_testing:${SHORT_SHA}', '.']
+- name: 'gcr.io/flowlink-project/github.com/flowlink/quiet_logistics_integration_testing:${SHORT_SHA}'
+  args: ['/bin/bash', '/app/scripts/rspec-cb.sh']
+  env:
+    - 'client_id=MACKWELDON'
+    - 'amazon_region=us-east-1'
+    - 'business_unit=MACKWELDON'
+    - 'ql_incoming_queue=https://sqs.us-east-1.amazonaws.com/630008457067/test_mackweldon_from_quiet'
+    - 'ql_outgoing_queue=https://sqs.us-east-1.amazonaws.com/630008457067/test_mackweldon_to_quiet'
+    - 'ql_incoming_bucket=test-mackweldon-from-quiet'
+    - 'ql_outgoing_bucket=test-mackweldon-to-quiet'
+    - 'AWS_REGION=us-east-1'
+  secretEnv: ['amazon_access_key', 'amazon_secret_key']
