@@ -1,0 +1,106 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://<ql_outgoing_bucket>.s3.amazonaws.com/<client_id>_ItemProfile_10101010101010101_20200811_0111716.xml
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0"?>
+        <ItemProfileDocument xmlns="http://schemas.quietlogistics.com/V2/ItemProfile.xsd">
+          <ItemProfile ClientID="<client_id>" BusinessUnit="<client_id>" ItemNo="10101010101010101" UPCno="10101010101010101" StockWgt="1.0000" StockUOM="EA" ItemDesc="Description field">
+            <UnitQuantity BarCode="10101010101010101" Quantity="8" UnitOfMeasure="EA"/>
+          </ItemProfile>
+        </ItemProfileDocument>
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.30.0 ruby/2.3.3 x86_64-linux aws-sdk-s3/1.21.0
+      Expect:
+      - 100-continue
+      Content-Md5:
+      - SdPeujT9sYXECR8AhvJ43g==
+      Host:
+      - "<ql_outgoing_bucket>.s3.amazonaws.com"
+      X-Amz-Date:
+      - 20200811T011138Z
+      X-Amz-Content-Sha256:
+      - 689c38f3f77a30d9e6fa712e6e5f9edd1f6b7daef8d05ed0774efa9af6aa5c66
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=<amazone_access_key>/20200811/<amazon_region>/s3/aws4_request,
+        SignedHeaders=content-md5;expect;host;user-agent;x-amz-content-sha256;x-amz-date,
+        Signature=3ea2783c3b6a84bc4788314cc8cebdc7afcb1f972a67b80113df8069a0cbb2c1
+      Content-Length:
+      - '391'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amz-Id-2:
+      - FW78gAoYxkod/Dg1mNozZfa/jpQRWNMraMZ9DgLO4SamKKj9HegK3Lx4/sCdsFZ0SLri9ZSVES4=
+      X-Amz-Request-Id:
+      - 9A2001B338DC145D
+      Date:
+      - Tue, 11 Aug 2020 01:11:40 GMT
+      Etag:
+      - '"49d3deba34fdb185c4091f0086f278de"'
+      Content-Length:
+      - '0'
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 11 Aug 2020 01:11:39 GMT
+- request:
+    method: post
+    uri: https://sqs.<amazon_region>.amazonaws.com/281329733056/test_cuup_to_quiet
+    body:
+      encoding: UTF-8
+      string: Action=SendMessage&MessageBody=%3C%3Fxml%20version%3D%221.0%22%3F%3E%0A%3CEventMessage%20xmlns%3D%22http%3A%2F%2Fschemas.quietlogistics.com%2FV2%2FEventMessage.xsd%22%20ClientId%3D%22<client_id>%22%20BusinessUnit%3D%22<client_id>%22%20DocumentName%3D%22<client_id>_ItemProfile_10101010101010101_20200811_0111716.xml%22%20DocumentType%3D%22ItemProfile%22%20MessageId%3D%227604c715-7477-4cdd-9de5-60966979a94d%22%20Warehouse%3D%22DVN%22%20MessageDate%3D%222020-08-11T01%3A11%3A39Z%22%2F%3E%0A&QueueUrl=https%3A%2F%2Fsqs.<amazon_region>.amazonaws.com%2F281329733056%2Ftest_cuup_to_quiet&Version=2012-11-05
+    headers:
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=utf-8
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.30.0 ruby/2.3.3 x86_64-linux aws-sdk-sqs/1.7.0
+      Host:
+      - sqs.<amazon_region>.amazonaws.com
+      X-Amz-Date:
+      - 20200811T011139Z
+      X-Amz-Content-Sha256:
+      - 6b0ce990c3b4d4b7c111eeea922b920a403be7a22858058320160d34201e20f9
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=<amazone_access_key>/20200811/<amazon_region>/sqs/aws4_request,
+        SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date, Signature=a2c3a3a1fbfb5fe7bfc9a3319bfe5b28011892127b03fdcc3d324636bb1064bc
+      Content-Length:
+      - '575'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amzn-Requestid:
+      - 23c095cb-d4a0-5ad1-9dfe-c260262b0197
+      Date:
+      - Tue, 11 Aug 2020 01:11:39 GMT
+      Content-Type:
+      - text/xml
+      Content-Length:
+      - '378'
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0"?><SendMessageResponse xmlns="http://queue.amazonaws.com/doc/2012-11-05/"><SendMessageResult><MessageId>fefe8e5e-9713-4bb3-a085-7a42bd1cdc3e</MessageId><MD5OfMessageBody>b64f7599084047f355214adf725f8211</MD5OfMessageBody></SendMessageResult><ResponseMetadata><RequestId>23c095cb-d4a0-5ad1-9dfe-c260262b0197</RequestId></ResponseMetadata></SendMessageResponse>
+    http_version: 
+  recorded_at: Tue, 11 Aug 2020 01:11:40 GMT
+recorded_with: VCR 5.0.0
