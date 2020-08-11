@@ -10,25 +10,28 @@ module Documents
     end
 
     def to_xml
+      item_profile ={
+        'ClientID' => @config['client_id'],
+        'BusinessUnit' => @unit,
+        'ItemNo' => @item['sku'],
+        'UPCno' => @item['upc'] || @item['sku'],
+        'StockWgt' => "1.0000",
+        'StockUOM' => "EA",
+        'ItemDesc' => @item['description'],
+        'ImageUrl' => @item['image_url'],
+        'ItemSize' => @item['item_size'],
+        'ItemMaterial' => @item['material'],
+        'ItemColor' => @item['color_name'],
+        'CommodityClass' => @item['commodity_class'],
+        'CommodityDesc' => @item['description'],
+        'VendorName' => @item['vendor_name'],
+        'VendorItemNo' => @item['vendor_item_no']
+      }.compact
       builder = Nokogiri::XML::Builder.new do |xml|
         xml.ItemProfileDocument('xmlns' => 'http://schemas.quietlogistics.com/V2/ItemProfile.xsd') {
-          xml.ItemProfile('ClientID' => @config['client_id'],
-            'BusinessUnit' => @unit,
-            'ItemNo' => @item['sku'],
-            'StockWgt' => "1.0000",
-            'StockUOM' => "EA",
-            'ImageUrl' => @item['image_url'],
-            'ItemSize' => @item['item_size'],
-            'ItemMaterial' => @item['material'],
-            'ItemColor' => @item['color_name'],
-            'ItemDesc' => @item['description'],
-            'CommodityClass' => @item['commodity_class'],
-            'CommodityDesc' => @item['description'],
-            'UPCno' => @item['upc'],
-            'VendorName' => @item['vendor_name'],
-            'VendorItemNo' => @item['vendor_item_no']) {
-              xml.UnitQuantity('BarCode' => @item['upc'], 'Quantity' => '1', 'UnitOfMeasure' => 'EA')
-            }
+          xml.ItemProfile(item_profile) {
+            xml.UnitQuantity('BarCode' => (@item['upc'] || @item['sku']), 'Quantity' => (@item['quantity'] || '1'), 'UnitOfMeasure' => 'EA')
+          }
         }
       end
       builder.to_xml
