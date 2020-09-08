@@ -20,6 +20,8 @@ module Documents
         'Gift'        => @shipment['gift'] ? 'true' : 'false'
       }
 
+      order_header['SiteID'] = @shipment['site_id'] if @shipment['site_id']
+
 
       builder = Nokogiri::XML::Builder.new do |xml|
         xml.ShipOrderDocument('xmlns' => 'http://schemas.quietlogistics.com/V2/ShipmentOrder.xsd') {
