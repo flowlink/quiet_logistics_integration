@@ -23,7 +23,9 @@ module Documents
         'ItemMaterial' => @item['item_material'],
         'ItemColor' => @item['item_color'],
         'CommodityClass' => @item['commodity_class'],
+        'CommodityCode' => @item['commodity_code'],
         'CommodityDesc' => @item['commodity_desc'],
+        'CountryOfOrigin' => @item['country_of_origin'],
         'VendorName' => @item['vendor_name'],
         'VendorItemNo' => @item['vendor_item_no']
       }.compact
