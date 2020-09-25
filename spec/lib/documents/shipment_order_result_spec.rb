@@ -50,13 +50,13 @@ module Documents
         </SOResult>
       XML
 
-      result = ShipmentOrderResult.new(xml)
+      result = ShipmentOrderResult.new(xml, {})
 
       expect(result.to_flowlink_hash).to eq(
         {
         :id =>"H13088556647",
         :quietlogistics_id=>"H13088556647",
-        :order_number=>"H13088556647",
+        :order_number => "H13088556647",
         :tracking_numbers=>["1Z1111111111111111", "1Z2222222222222222"],
         :shipping_method=>"GROUND", :warehouse=>"DVN", :status=>"shipped",
         :business_unit=>"BONOBOS", :shipped_at=>"2015-02-24T15:51:31.0953088Z",
@@ -66,7 +66,7 @@ module Documents
           {:carton_id=>"S11111111", :tracking_number=>"1Z1111111111111111", :product_id=>"2222222", :quantity=>1},
           {:carton_id=>"S22222222", :tracking_number=>"1Z2222222222222222", :product_id=>"3333333", :quantity=>1}
         ],
-        :order=>{:order_number=>"H13088556647"},
+        :order=>{'order_number' =>"H13088556647"},
         :relationships=>[{:object=>"order", :key=>"order_number"}]
         }
       )
