@@ -19,15 +19,15 @@ class Processor
     # to delete it.
     # downloader.delete_file(name)
 
-    parse_doc(type, data)
+    parse_doc(type, data, msg)
   end
 
   private
 
-  def parse_doc(type, data)
+  def parse_doc(type, data, msg)
     case type
     when 'ShipmentOrderResult'
-      Documents::ShipmentOrderResult.new(data)
+      Documents::ShipmentOrderResult.new(data, msg)
     when 'ShipmentOrderCancelReady'
       Documents::ShipmentOrderCancelReady.new(data)
     when 'PurchaseOrderReceipt'
