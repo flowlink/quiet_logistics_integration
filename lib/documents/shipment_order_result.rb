@@ -28,13 +28,17 @@ module Documents
 
     attr_reader :type
 
-    def initialize(xml)
+    def initialize(xml, msg)
       @doc = Nokogiri::XML(xml)
       @type = :shipment
+      @message = msg
     end
 
     def to_flowlink_hash
       id = @doc.xpath('//@OrderNumber').first.text
+      relation = 'order_number'
+      relation = @message['ql_relationships'] if @message['ql_relationships']
+
       {
         id: id,
         quietlogistics_id: id,
@@ -48,10 +52,12 @@ module Documents
         shipped_at: @doc.xpath('//@DateShipped').first.text,
         tracking_company: @doc.xpath('//@Carrier').first.text,
         line_items: line_items_to_h,
-        order: { order_number: @doc.xpath('//@OrderNumber').first.text },
+        order: {
+          relation => @doc.xpath('//@OrderNumber').first.text
+        },
         relationships: [
           {
-            object: 'order', key: 'order_number'
+            object: 'order', key: relation
           }
         ]
       }
