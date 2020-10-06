@@ -22,6 +22,7 @@ module Documents
         'ItemSize' => @item['item_size'],
         'ItemMaterial' => @item['item_material'],
         'ItemColor' => @item['item_color'],
+        'ItemStyle' => @item['item_style'],
         'CommodityClass' => @item['commodity_class'],
         'CommodityCode' => @item['commodity_code'],
         'CommodityDesc' => @item['commodity_desc'],
