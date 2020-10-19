@@ -42,16 +42,26 @@ module Documents
 
       items.map do |item|
         statuses = item.xpath('ql:ItemStatus', 'ql' => NAMESPACE)
+        inventory = {
+          id: "#{item['ItemNumber']}",
+          product_id: item['ItemNumber'],
+          location: summary.first['Warehouse'],
+          updated_at: Time.now.strftime('%Y%m%d_%H%M%3N')
+        }
 
         statuses.each do |status|
-          inventories << {
-              id: "#{item['ItemNumber']}",
-              product_id: item['ItemNumber'],
-              location: summary.first['Warehouse'],
-              quantity: status['Quantity'].to_i,
-              updated_at: Time.now.strftime('%Y%m%d_%H%M%3N')
-          } if status['Status'] == 'Avail'
+          case status['Status']
+          when 'Avail'
+            inventory[:quantity] = status['Quantity'].to_i
+          when 'Alloc'
+            inventory[:allocated_quantity] = status['Quantity'].to_i
+          when 'RECEIVED'
+            inventory[:received_quantity] = status['Quantity'].to_i
+          end
         end
+
+        inventories << inventory
+
       end
 
       inventories
