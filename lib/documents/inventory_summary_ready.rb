@@ -50,9 +50,14 @@ module Documents
         }
 
         statuses.each do |status|
-          inventory[:quantity] = status['Quantity'].to_i if status['Status'] == 'Avail'
-          inventory[:allocated_quantity] = status['Quantity'].to_i if status['Status'] == 'Alloc'
-          inventory[:received_quantity] = status['Quantity'].to_i if status['Status'] == 'RECEIVED'
+          case status['Status']
+          when 'Avail'
+            inventory[:quantity] = status['Quantity'].to_i
+          when 'Alloc'
+            inventory[:allocated_quantity] = status['Quantity'].to_i
+          when 'RECEIVED'
+            inventory[:received_quantity] = status['Quantity'].to_i
+          end
         end
 
         inventories << inventory
