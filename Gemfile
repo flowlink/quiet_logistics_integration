@@ -20,11 +20,3 @@ group :test do
   gem 'rack-test'
   gem 'vcr'
 end
-
-group :development do
-  gem 'pry'
-end
-
-group :test, :development do
-  gem 'pry-byebug'
-end
