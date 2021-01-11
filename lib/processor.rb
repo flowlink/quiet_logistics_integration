@@ -1,7 +1,8 @@
 class Processor
 
-  def initialize(bucket)
+  def initialize(bucket, config={})
     @bucket = bucket
+    @config = config
   end
 
   def process_doc(msg)
@@ -29,7 +30,7 @@ class Processor
     when 'ShipmentOrderResult'
       Documents::ShipmentOrderResult.new(data, msg)
     when 'ShipmentOrderCancelReady'
-      Documents::ShipmentOrderCancelReady.new(data)
+      Documents::ShipmentOrderCancelReady.new(data, @config)
     when 'PurchaseOrderReceipt'
       Documents::PurchaseOrderReceipt.new(data)
     when 'RMAResultDocument'
