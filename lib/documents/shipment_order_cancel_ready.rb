@@ -28,16 +28,18 @@ module Documents
 
     attr_reader :type
 
-    def initialize(xml)
+    def initialize(xml, config)
       @doc = Nokogiri::XML(xml)
       @type = :order
+      @config = config
     end
 
     def to_flowlink_hash
       return unless @doc.xpath('//@Status').first.text == "SUCCESS"
 
+
       id = @doc.xpath('//@OrderNumber').first.text
-      {
+      data = {
         id: id,
         quietlogistics_id: id,
         order_number: @doc.xpath('//@OrderNumber').first.text,
@@ -47,6 +49,14 @@ module Documents
         reason: @doc.xpath('//@Reason').first.text,
         business_unit: @doc.xpath('//@BusinessUnit').first.value
       }
+
+      if @config['ql_keys']
+        keys = @config['ql_keys'].split(',')
+        data[:key] = @config['ql_keys']
+        keys.each { |key| data[key] = id }
+      end
+
+      data
     end
   end
 end
