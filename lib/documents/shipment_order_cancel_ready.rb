@@ -52,8 +52,9 @@ module Documents
 
       if @config['ql_keys']
         keys = @config['ql_keys'].split(',')
-        data[:key] = @config['ql_keys']
-        keys.each { |key| data[key] = id }
+        key_array = []
+        keys.each { |key| data[key] = id; key_array << key }
+        data[:key] = key_array
       end
 
       data
