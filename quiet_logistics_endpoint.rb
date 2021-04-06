@@ -37,7 +37,12 @@ class QuietLogisticsEndpoint < EndpointBase::Sinatra::Base
       receiver = Receiver.new(queue, @config['ql_message_iterations'])
       receiver.receive_messages do |msg|
         if Messages::MessageParser.is_regexp_match?(msg, @config)
-          add_object :message, msg
+          if @config['ql_include_timestamp']
+            message = msg.merge({ timestamp: Time.now.to_s })
+          else
+            message = msg
+          end
+          add_object :message, message
           message_count += 1
         end
       end
