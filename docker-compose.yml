@@ -3,6 +3,12 @@ version: "3"
 services:
   quiet-logistics-integration:
     build: .
+    environment:
+      - RAILS_ENV=development
+    env_file:
+      - ./dev.env
+    ports:
+      - 3001:5000
     stdin_open: true
     tty: true
     volumes:

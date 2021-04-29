@@ -7,7 +7,7 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'gcr.io/flowlink-project/github.com/flowlink/quiet_logistics_integration_testing:${SHORT_SHA}', '.']
 - name: 'gcr.io/flowlink-project/github.com/flowlink/quiet_logistics_integration_testing:${SHORT_SHA}'
-  args: ['/bin/bash', '/app/scripts/rspec-cb.sh']
+  args: ['/bin/sh', '/app/scripts/rspec-cb.sh']
   env:
     - 'client_id=MACKWELDON'
     - 'amazon_region=us-east-1'
