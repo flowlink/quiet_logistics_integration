@@ -38,6 +38,7 @@ module Documents
       id = @doc.xpath('//@OrderNumber').first.text
       relation = 'order_number'
       relation = @message['ql_relationships'] if @message['ql_relationships']
+      id = update_id if @message['ql_remove_prefix']
 
       {
         id: id,
@@ -53,7 +54,7 @@ module Documents
         tracking_company: @doc.xpath('//@Carrier').first.text,
         line_items: line_items_to_h,
         order: {
-          relation => @doc.xpath('//@OrderNumber').first.text
+          relation => id
         },
         relationships: [
           {
@@ -73,6 +74,19 @@ module Documents
 
     def tracking_numbers
       line_items_to_h.map { |item| item[:tracking_number] }.uniq
+    end
+
+    def update_id
+      order_number = @doc.xpath('//@OrderNumber').first.text
+      title = order_number.split('-')
+      case title.size
+      when 1
+        title[0]
+      when 2
+        title[1]
+      else
+        title[1..-1].join('-')
+      end
     end
 
     def line_items_to_h
