@@ -81,11 +81,11 @@ module Documents
       title = order_number.split('-')
       case title.size
       when 1
-        title[0]
+        title[0].strip
       when 2
-        title[1]
+        title[1].strip
       else
-        title[1..-1].join('-')
+        title[1..-1].join('-').strip
       end
     end
 
