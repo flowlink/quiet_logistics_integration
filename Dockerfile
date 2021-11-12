@@ -9,7 +9,8 @@ COPY ./ /app
 RUN gem install bundler:1.16.0
 RUN bundle install --jobs 5
 
-RUN apk del build-base curl-dev git linux-headers openssl-dev ruby-dev
+ARG DEVELOPMENT
+RUN if [ -z $DEVELOPMENT ] ; then apk del build-base curl-dev git linux-headers openssl-dev ruby-dev ; fi
 
 ENTRYPOINT [ "bundle", "exec" ]
 CMD [ "foreman", "start" ]
