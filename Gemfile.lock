@@ -48,7 +48,7 @@ GEM
       concurrent-ruby (~> 1.0)
     jbuilder (2.10.1)
       activesupport (>= 5.0.0)
-    jmespath (1.4.0)
+    jmespath (1.6.1)
     json (2.5.1)
     kgio (2.11.3)
     mini_portile2 (2.4.0)
